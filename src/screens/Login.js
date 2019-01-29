@@ -1,8 +1,7 @@
 import React from 'react';
-import { ContainerView } from '../components;
+import { ContainerView, Input } from '../components'
 
-
-class Login extends React.Component { 
+export default class Login extends React.Component { 
     state = {
         username: '',
         password: ''
@@ -11,6 +10,19 @@ class Login extends React.Component {
     onHandleLogin = () => {}
 
     render() {
-        return <ContainerView></ContainerView>
+        return (
+            <ContainerView>
+                <Input 
+                    placeholder="Username" 
+                    value={this.state.username}
+                    onChangeText={text => this.setState({ username: text })}
+                />
+                <Input 
+                    placeholder="Username" 
+                    value={this.state.username}
+                    onChangeText={text => this.setState({ username: text })}
+                />
+            </ContainerView>
+        )
     }
 }

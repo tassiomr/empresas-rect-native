@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
         height: 55,
         backgroundColor: colors.input,
         borderRadius: 5,
-        margin: 5,
         paddingLeft: 10,
         paddingRight: 10,
         color: colors.black

@@ -2,11 +2,13 @@ import React from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
 
-export const Input = ({ placeholder, onChangeText, value }) => (
+export const Input = ({ placeholder, secureTextEntry, keyboardType, onChangeText, value }) => (
     <TextInput
         placeholder={placeholder}
         onChangeText={text => onChangeText(text)}        
         value={value}
+        secureTextEntry={secureTextEntry}
+        keyboardType={keyboardType}
         style={styles.input}
     />
 )

@@ -1,9 +1,13 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { ActivityIndicator, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-export const Button = ({ onPress, label,color }) => (
+export const Button = ({ onPress, label, loading, color, txtColor }) => (
     <TouchableOpacity style={[styles.btn, { backgroundColor: color }]} onPress={onPress}>
-        <Text style={styles.txt}>{label}</Text>
+        {
+            loading
+            ? <ActivityIndicator size="small" color={txtColor} />
+            : <Text style={[styles.txt, { color: txtColor }]}>{label}</Text>
+        }
     </TouchableOpacity>
 )
 
@@ -20,7 +24,6 @@ const styles = StyleSheet.create({
     },
     txt: {
         fontWeight: 'bold',
-        color: 'white',
         borderWidth: 0
     }
 })

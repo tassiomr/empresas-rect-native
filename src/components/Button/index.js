@@ -2,7 +2,9 @@ import React from 'react';
 import { ActivityIndicator, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 export const Button = ({ onPress, label, loading, color, txtColor }) => (
-    <TouchableOpacity style={[styles.btn, { backgroundColor: color }]} onPress={onPress}>
+    <TouchableOpacity
+        style={[styles.btn, { backgroundColor: color }]}
+        onPress={onPress}>
         {
             loading
             ? <ActivityIndicator size="small" color={txtColor} />

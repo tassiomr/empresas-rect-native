@@ -4,6 +4,7 @@ import { Text } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { ContainerView, Input, Button, Wrapper } from '../components'
 import { tryLogin, setCredentials } from '../redux/actions/login';
+import { colors } from '../utils/colors';
 
 class Login extends React.Component { 
     state = {
@@ -32,7 +33,7 @@ class Login extends React.Component {
         const { loading, login } = this.props;
         
         return (
-            <ContainerView color="tomato">
+            <ContainerView color={colors.primary}>
                 <Wrapper style={styles.wrapper}>
                 <Input 
                     keyboardType="email-address"
@@ -49,7 +50,8 @@ class Login extends React.Component {
                 />
                 <Button 
                     label="Login"
-                    color="cyan"
+                    txtColor={colors.white}
+                    color={colors.brown}
                     loading={loading}
                     onPress={this.onHandleLogin}
                 />

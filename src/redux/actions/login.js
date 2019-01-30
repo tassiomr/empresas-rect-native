@@ -29,8 +29,6 @@ const failureSetCredentials = error => ({
     type: FAILURE_SET_CREDENTIALS, error 
 });
 
-
-
 const url = `http://empresas.ioasys.com.br/api/v1/users/auth/sign_in`;
 
 export const tryLogin = (email, password) => dispatch => {
@@ -50,13 +48,13 @@ export const tryLogin = (email, password) => dispatch => {
     }
 }
 
-export const setCredentials = (data, user) => async dispatch => {
+export const setCredentials = (data, user) => dispatch => {
     try {
         dispatch(requestSetCredentials());
-        await AsyncStorage.setItem('accessToken', data['access-token'])
-        await AsyncStorage.setItem('uid', data.uid)
-        await AsyncStorage.setItem('client', data.cliet)
-        await AsyncStorage.setItem('user', JSON.stringify(user))
+        AsyncStorage.setItem('accessToken', data['access-token'])
+        AsyncStorage.setItem('uid', data.uid)
+        AsyncStorage.setItem('client', data.cliet)
+        AsyncStorage.setItem('user', JSON.stringify(user))
         dispatch(successSetCredentials());
     } catch(error) {
         dispatch(failureSetCredentials(error));

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextInput, StyleSheet } from 'react-native';
-
+import { colors } from '../../utils/colors';
 
 export const Input = ({ placeholder, secureTextEntry, keyboardType, onChangeText, value }) => (
     <TextInput
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     input: {
         width: '100%',
         height: 55,
-        backgroundColor: 'rgba(255,255,255,0.4)',
+        backgroundColor: colors.input,
         borderRadius: 5,
         margin: 5,
         paddingLeft: 10,

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { AsyncStorage } from 'react-native';
 
+const url = `http://empresas.ioasys.com.br/api/v1/users/auth/sign_in`;
+
 export const REQUEST_LOGIN = 'REQUEST_LOGIN';
 export const SUCCESS_LOGIN = 'SUCCESS_LOGIN';
 export const FAILURE_LOGIN = 'FAILURE_LOGIN';
@@ -16,6 +18,22 @@ const failureLogin = error => ({
     error 
 });
 
+export const REQUEST_LOGOUT = 'REQUEST_LOGOUT';
+export const SUCCESS_LOGOUT = 'SUCCESS_LOGOUT';
+export const FAILURE_LOGOUT = 'FAILURE_LOGOUT';
+
+const requestLogout = () => ({ type: REQUEST_LOGOUT });
+const successLogout = (data, user) => ({ 
+    type: SUCCESS_LOGOUT, 
+    data, 
+    user 
+});
+const failureLogout = error => ({ 
+    type: FAILURE_LOGOUT, 
+    error 
+});
+
+
 export const REQUEST_SET_CREDENTIALS = 'REQUEST_SET_CREDENTIALS';
 export const SUCCESS_SET_CREDENTIALS = 'SUCCESS_SET_CREDENTIALS';
 export const FAILURE_SET_CREDENTIALS = 'FAILURE_SET_CREDENTIALS';
@@ -29,7 +47,6 @@ const failureSetCredentials = error => ({
     type: FAILURE_SET_CREDENTIALS, error 
 });
 
-const url = `http://empresas.ioasys.com.br/api/v1/users/auth/sign_in`;
 
 export const tryLogin = (email, password) => dispatch => {
     dispatch(requestLogin());
@@ -61,3 +78,18 @@ export const setCredentials = (data, user) => dispatch => {
     }
 }
 
+
+
+export const logout = () => dispatch => {
+    try{
+        dispatch(requestLogout())
+        AsyncStorage.removeItem('accessToken', data['access-token'])
+        AsyncStorage.removeItem('uid', data.uid)
+        AsyncStorage.removeItem('client', data.cliet)
+        AsyncStorage.removeItem('user', JSON.stringify(user))
+        dispatch(successLogout())
+    }
+    catch(error) {
+        dispatch(failureLogout(error))
+    }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContainerView, Input } from '../components'
+import { ContainerView, Input, Button } from '../components'
 
 export default class Login extends React.Component { 
     state = {
@@ -11,16 +11,21 @@ export default class Login extends React.Component {
 
     render() {
         return (
-            <ContainerView>
+            <ContainerView color="tomato">
                 <Input 
                     placeholder="Username" 
                     value={this.state.username}
                     onChangeText={text => this.setState({ username: text })}
                 />
                 <Input 
-                    placeholder="Username" 
+                    placeholder="Password" 
                     value={this.state.username}
                     onChangeText={text => this.setState({ username: text })}
+                />
+                <Button 
+                    label="Login"
+                    color="cyan"
+                    onPress={() => {}}
                 />
             </ContainerView>
         )

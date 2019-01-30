@@ -1,29 +1,65 @@
 import axios from 'axios';
+import { AsyncStorage } from 'react-native';
 
 export const REQUEST_LOGIN = 'REQUEST_LOGIN';
 export const SUCCESS_LOGIN = 'SUCCESS_LOGIN';
 export const FAILURE_LOGIN = 'FAILURE_LOGIN';
 
-
 const requestLogin = () => ({ type: REQUEST_LOGIN });
-const successLogin = data => ({ type: SUCCESS_LOGIN, data });
-const failureLogin = error => ({ type: FAILURE_LOGIN, error })
+const successLogin = (data, user) => ({ 
+    type: SUCCESS_LOGIN, 
+    data, 
+    user 
+});
+const failureLogin = error => ({ 
+    type: FAILURE_LOGIN, 
+    error 
+});
 
-const url = `http://empresas.ioasys.com.br/api/v1/users/auth/sign_in`
+export const REQUEST_SET_CREDENTIALS = 'REQUEST_SET_CREDENTIALS';
+export const SUCCESS_SET_CREDENTIALS = 'SUCCESS_SET_CREDENTIALS';
+export const FAILURE_SET_CREDENTIALS = 'FAILURE_SET_CREDENTIALS';
+
+const requestSetCredentials = () => ({ type: REQUEST_SET_CREDENTIALS });
+const successSetCredentials = data => ({ 
+    type: SUCCESS_SET_CREDENTIALS, 
+    data 
+});
+const failureSetCredentials = error => ({ 
+    type: FAILURE_SET_CREDENTIALS, error 
+});
+
+
+
+const url = `http://empresas.ioasys.com.br/api/v1/users/auth/sign_in`;
 
 export const tryLogin = (email, password) => dispatch => {
-    try {
-        dispatch(requestLogin());
+    dispatch(requestLogin());
 
+    try {
+        
         axios.post(
             url, 
             { email, password }, 
-            { headers: { 'Content-Type': 'application/json'}}
-        ).then(e => dispatch(successLogin(e.headers)))
+            { headers: { 'Content-Type': 'application/json'}})
+            .then(e => dispatch(successLogin(e.headers, e.data)))
             .catch(e => alert(e))
-        dispatch(successLogin())
+
     } catch(error) {
         dispatch(failureLogin(error));
+    }
+}
+
+export const setCredentials = (data, user) => async dispatch => {
+    try {
+        dispatch(requestSetCredentials());
+        await AsyncStorage.setItem('accessToken', data['access-token'])
+        await AsyncStorage.setItem('uid', data.uid)
+        await AsyncStorage.setItem('client', data.cliet)
+        await AsyncStorage.setItem('user', JSON.stringify(user))
+        dispatch(successSetCredentials());
+    } catch(error) {
+        dispatch(failureSetCredentials(error));
     }
 }
 

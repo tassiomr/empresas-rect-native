@@ -6,7 +6,7 @@ export const ContainerView = ({ color, children }) => (
             styles.container,
             { backgroundColor: color }]}
     >
-        <StatusBar backgroundColor={color} />
+        <StatusBar backgroundColor={color} barStyle="dark-content" />
         { children }
     </View>
 )

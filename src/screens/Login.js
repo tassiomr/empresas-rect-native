@@ -1,33 +1,50 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { ContainerView, Input, Button } from '../components'
+import { tryLogin } from '../redux/actions/login';
 
-export default class Login extends React.Component { 
+class Login extends React.Component { 
     state = {
-        username: '',
-        password: ''
+        username: 'testeapple@ioasys.com.br',
+        password: '12341234'
     }
 
-    onHandleLogin = () => {}
+    onHandleLogin = () => {
+        const { email, password } = this.state;
+        this.props.tryLogin(
+           email,
+           password
+        );
+    }
 
     render() {
         return (
             <ContainerView color="tomato">
                 <Input 
-                    placeholder="Username" 
+                    keyboardType="email-address"
+                    placeholder="Email" 
                     value={this.state.username}
                     onChangeText={text => this.setState({ username: text })}
                 />
                 <Input 
+                    keyboardType="numeric"
                     placeholder="Password" 
-                    value={this.state.username}
+                    secureTextEntry
+                    value={this.state.password}
                     onChangeText={text => this.setState({ username: text })}
                 />
                 <Button 
                     label="Login"
                     color="cyan"
-                    onPress={() => {}}
+                    onPress={this.onHandleLogin}
                 />
             </ContainerView>
         )
     }
 }
+
+const mapStateToProps = state => state;
+const mapDispatchToProps = dispatch => bindActionCreators({ tryLogin },dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StatusBar, StyleSheet } from 'react-native';
+import { colors } from '../../utils/colors'
 import { Title } from '../Titles';
 
 export const ContainerView = ({ color, children, error }) => (
@@ -7,7 +8,7 @@ export const ContainerView = ({ color, children, error }) => (
             styles.container,
             { backgroundColor: color }]}
     >
-        <StatusBar backgroundColor={color} barStyle="dark-content" />
+        <StatusBar backgroundColor={colors.primary} barStyle="dark-content" />
         { children }
         {
             error 

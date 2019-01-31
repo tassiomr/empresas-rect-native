@@ -2,6 +2,7 @@ import React from 'react';
 import { Animated, View, AsyncStorage } from 'react-native';
 import { Title, SubtTitle } from '../components/Titles';
 import { Button } from '../components';
+import { colors } from '../utils/colors';
 
 export default class User extends React.Component {
     state = {
@@ -23,7 +24,7 @@ export default class User extends React.Component {
             this.state.animateOpacity,
             {
                 toValue: 1,
-                duration: 400
+                duration: 300
             }
         ).start()
     }
@@ -46,6 +47,7 @@ export default class User extends React.Component {
                     borderRadius: 5,
                     opacity: animateOpacity,
                     height: '30%',
+                    elevation: 5,
                     width: '65%' }}>
                     <Animated.View style={{ opacity: animateOpacity, paddingLeft: 15, flex: 1 }}>
                         <Title>
@@ -61,7 +63,7 @@ export default class User extends React.Component {
                             Country { user.investor.country }
                         </SubtTitle>
                     </Animated.View>
-                    <Button label="Logout" color="cyan"/>
+                    <Button label="Logout" color={colors.primary} txtColor={colors.white}/>
                 </Animated.View>
             </Animated.View>
         )

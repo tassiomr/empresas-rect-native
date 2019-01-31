@@ -7,3 +7,4 @@ export { Image } from './Image';
 export { Card } from './Card';
 export { Title, SubtTitle } from './Titles';
 export { ProfileBar } from './ProfileBar';
+export { IconBar } from './IconBar';

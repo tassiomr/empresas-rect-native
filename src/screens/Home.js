@@ -1,9 +1,8 @@
 import React from 'react';
 import { AsyncStorage, ScrollView } from 'react-native';
-import { ContainerView, Wrapper, Input, ActivityIndicatorView } from '../components';
+import { ContainerView, Input, ActivityIndicatorView } from '../components';
 import { colors } from '../utils/colors';
 import { bindActionCreators } from 'redux';
-import { Title, SubtTitle } from '../components/Titles';
 import { logout } from '../redux/actions/login';
 import { getAllEnterpresises } from '../redux/actions/enterprise';
 import { connect } from 'react-redux';
@@ -35,7 +34,7 @@ class Home extends React.Component {
     onHandleShowProfile = () => this.setState({ show: !this.state.show })
 
     render(){
-        const { enterprises } = this.props
+        const { enterprises, error } = this.props
         const { show } = this.state;
         
         if(!enterprises) {
@@ -43,7 +42,7 @@ class Home extends React.Component {
         }
 
         return (
-            <ContainerView color={colors.white}>
+            <ContainerView color={colors.white} error={error}>
                 <ProfileBar onPress={this.onHandleShowProfile} />    
                 <ScrollView
                     contentContainerStyle={{
@@ -69,6 +68,7 @@ class Home extends React.Component {
 
 const mapStateToProps = ({ enterprise }) => ({
     enterprises: enterprise.data,
+    error: enterprise.error
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ getAllEnterpresises, logout }, dispatch);

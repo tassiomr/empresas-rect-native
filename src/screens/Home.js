@@ -29,9 +29,20 @@ class Home extends React.Component {
   }
 
   async componentDidMount() {
+    const { opacity } = this.state;
+
     const { getAllEnterpresises } = this.props;
     await getAllEnterpresises();
   }
+
+  componentDidUpdate(prevState) {
+    const { success, navigation } = this.props;
+
+    if (prevState.success !== success && success) {
+      navigation.navigate('Login');
+    }
+  }
+
 
   shouldComponentUpdate(nextProps) {
     const { scrollY } = this.state;
@@ -86,12 +97,13 @@ class Home extends React.Component {
     }
 
     return (
-      <ContainerView color={colors.white} error={error}>
+      <ContainerView color={colors.white} error={error} animated>
         <ProfileBar
           onPress={this.onHandleShowProfile}
           backgroundColor={this.animatedBgColor}
           elevation={this.animatedElevation}
           color={this.animatedTextColor}
+          logout={this.onHandleTryLogout}
         />
         <Animated.ScrollView
           scrollEventThrolle={1}
@@ -132,9 +144,10 @@ class Home extends React.Component {
 }
 
 
-const mapStateToProps = ({ enterprise }) => ({
+const mapStateToProps = ({ enterprise, login }) => ({
   enterprises: enterprise.data ? enterprise.data.enterprises : null,
   error: enterprise.error,
+  success: login.successLogout,
 });
 
 const mapDispatchToProps = dispatch => (
@@ -146,6 +159,13 @@ Home.propTypes = {
   logout: PropTypes.func.isRequired,
   error: PropTypes.string.isRequired,
   enterprises: PropTypes.array.isRequired,
+  success: PropTypes.bool,
+  navigation: PropTypes.object,
+};
+
+Home.defaultProps = {
+  success: true,
+  navigation: {},
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

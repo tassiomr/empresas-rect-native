@@ -23,6 +23,7 @@
     "react/jsx-one-expression-per-line": "off",
     "react/no-did-update-set-state": "off",
     "react/jsx-filename-extension": "off",
-    "react/forbid-prop-types": "off"
+    "react/forbid-prop-types": "off",
+    "react/sort-comp": "off"
   }
 }

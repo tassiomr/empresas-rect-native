@@ -8,12 +8,13 @@ import { Button } from '../Button';
 
 const styles = StyleSheet.create({
   view: {
-    zIndex: 20,
+    zIndex: 2,
     width: '100%',
-    height: 60,
+    height: 100,
     paddingLeft: 20,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   profileContainer: {
     flex: 2,
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
 });
 
 export const ProfileBar = ({
-  uri, onPress, backgroundColor, elevation, color,
+  uri, onPress, backgroundColor, elevation, color, logout,
 }) => (
   <Animated.View style={[styles.view, { backgroundColor, elevation }]}>
     <View style={styles.profileContainer}>
@@ -36,7 +37,7 @@ export const ProfileBar = ({
       </TouchableOpacity>
     </View>
     <View style={styles.buttonContainer}>
-      <Button label="LOGOUT" txtColor={color} color={backgroundColor} />
+      <Button onPress={logout} label="LOGOUT" txtColor={color} color={backgroundColor} />
     </View>
   </Animated.View>
 );
@@ -47,6 +48,7 @@ ProfileBar.propTypes = {
   elevation: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 ProfileBar.defaultProps = {

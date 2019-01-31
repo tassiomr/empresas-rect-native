@@ -29,7 +29,13 @@ export default (state = initalState, action) => {
     case Types.LOGIN.REQUEST_SET_CREDENTIALS:
       return { ...state, loading: true, type: action.type };
     case Types.LOGIN.SUCCESS_SET_CREDENTIALS:
-      return { ...state, loading: false, type: action.type };
+      return {
+        ...state,
+        loading: false,
+        type: action.type,
+        success: true,
+        successLogout: false,
+      };
     case Types.LOGIN.FAILURE_SET_CREDENTIALS:
       return {
         ...state, loading: false, type: action.type, error: action.error,
@@ -37,7 +43,7 @@ export default (state = initalState, action) => {
     case Types.LOGIN.REQUEST_LOGOUT:
       return { ...state };
     case Types.LOGIN.SUCCESS_LOGOUT:
-      return { ...state, successLogout: true };
+      return { ...state, successLogout: true, success: false };
     case Types.LOGIN.FAILURE_LOGOUT:
       return { ...state, successLogout: false, error: action.error };
 

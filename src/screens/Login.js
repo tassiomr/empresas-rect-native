@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, AsyncStorage } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
@@ -29,11 +29,15 @@ class Login extends React.Component {
   state = {
     email: 'testeapple@ioasys.com.br',
     password: '12341234',
-    message: '',
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const { navigation } = this.props;
+    const token = await AsyncStorage.getItem('user');
 
+    if (token) {
+      navigation.navigate('Home');
+    }
   }
 
   componentDidUpdate(prevState) {

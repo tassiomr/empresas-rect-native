@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import {
   ActivityIndicator, TouchableOpacity, Text, StyleSheet,
+  Animated,
 } from 'react-native';
 import colors from '../../utils/colors';
 
@@ -25,14 +26,17 @@ export const Button = ({
   onPress, label, loading, color, txtColor,
 }) => (
   <TouchableOpacity
-    style={[styles.btn, { backgroundColor: color }]}
     onPress={onPress}
   >
-    {
+    <Animated.View style={[styles.btn, { backgroundColor: color }]}>
+
+
+      {
             loading
               ? <ActivityIndicator size="small" color={txtColor} />
-              : <Text style={[styles.txt, { color: txtColor }]}>{label}</Text>
+              : <Animated.Text style={[styles.txt, { color: txtColor }]}>{label}</Animated.Text>
         }
+    </Animated.View>
   </TouchableOpacity>
 );
 

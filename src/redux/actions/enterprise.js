@@ -3,6 +3,7 @@ import axios from 'axios';
 import { AsyncStorage } from 'react-native';
 
 import Types from '../types';
+import { genericError } from '../../utils/strings';
 
 const url = 'http://empresas.ioasys.com.br/api/v1';
 
@@ -27,11 +28,11 @@ export const getAllEnterpresises = () => async (dispatch) => {
     });
 
     if (result.error) {
-      dispatch(failureGetAll(result.error));
+      dispatch(failureGetAll(genericError));
     } else {
       dispatch(successGetAll(result.data));
     }
   } catch (error) {
-    dispatch(failureGetAll(error));
+    dispatch(failureGetAll(genericError));
   }
 };

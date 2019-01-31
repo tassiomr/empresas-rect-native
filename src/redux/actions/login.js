@@ -3,6 +3,7 @@ import { AsyncStorage } from 'react-native';
 import axios from 'axios';
 
 import Types from '../types';
+import { genericError } from '../../utils/strings';
 
 const url = 'http://empresas.ioasys.com.br/api/v1/users/auth/sign_in';
 
@@ -38,18 +39,23 @@ const failureSetCredentials = error => ({
 });
 
 
-export const tryLogin = (email, password) => (dispatch) => {
+export const tryLogin = (email, password) => async (dispatch) => {
   dispatch(requestLogin());
   try {
-    axios.post(
+    const result = await axios.post(
       url,
       { email, password },
       { headers: { 'Content-Type': 'application/json' } },
-    )
-      .then(e => dispatch(successLogin(e.headers, e.data)))
-      .catch(e => dispatch(failureLogin(e.message)));
+    );
+    if (!result.error) {
+      dispatch(successLogin(result.headers, result.data));
+    } else if (result.status === 401) {
+      dispatch(failureLogin('Usuário ou senha incorretos'));
+    } else {
+      dispatch(failureLogin('Erro inesperado, tente novamente!'));
+    }
   } catch (error) {
-    dispatch(failureLogin(JSON.stringify(error)));
+    dispatch(failureLogin(genericError));
   }
 };
 
@@ -62,7 +68,7 @@ export const setCredentials = (data, user) => (dispatch) => {
     AsyncStorage.setItem('user', JSON.stringify(user));
     dispatch(successSetCredentials());
   } catch (error) {
-    dispatch(failureSetCredentials(error));
+    dispatch(failureSetCredentials(genericError));
   }
 };
 
@@ -76,6 +82,6 @@ export const logout = () => (dispatch) => {
     AsyncStorage.removeItem('user');
     dispatch(successLogout());
   } catch (error) {
-    dispatch(failureLogout(error));
+    dispatch(failureLogout(genericError));
   }
 };

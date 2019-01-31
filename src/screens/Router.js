@@ -25,5 +25,4 @@ const Router = () => (
   </Provider>
 );
 
-
 export default Router;

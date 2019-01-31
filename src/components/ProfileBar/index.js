@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  Animated, View, TouchableOpacity, StyleSheet,
+} from 'react-native';
 import { Image } from '../Image';
-import { profile } from '../../utils/strings';
-import colors from '../../utils/colors';
 import { Button } from '../Button';
 
 const styles = StyleSheet.create({
   view: {
-    elevation: 4,
     zIndex: 20,
-    backgroundColor: colors.primary,
     width: '100%',
     height: 60,
     paddingLeft: 20,
@@ -28,22 +26,27 @@ const styles = StyleSheet.create({
   },
 });
 
-export const ProfileBar = ({ uri, onPress }) => (
-  <View style={styles.view}>
+export const ProfileBar = ({
+  uri, onPress, backgroundColor, elevation, color,
+}) => (
+  <Animated.View style={[styles.view, { backgroundColor, elevation }]}>
     <View style={styles.profileContainer}>
       <TouchableOpacity onPress={onPress} activeOpacity={1}>
-        <Image uri={uri || { uri: profile }} size={50} style={styles.image} />
+        <Image uri={uri} size={50} style={styles.image} />
       </TouchableOpacity>
     </View>
     <View style={styles.buttonContainer}>
-      <Button label="LOGOUT" />
+      <Button label="LOGOUT" txtColor={color} color={backgroundColor} />
     </View>
-  </View>
+  </Animated.View>
 );
 
 ProfileBar.propTypes = {
   uri: PropTypes.string,
   onPress: PropTypes.func,
+  elevation: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string.isRequired,
 };
 
 ProfileBar.defaultProps = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { Animated } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -25,11 +25,37 @@ class Home extends React.Component {
     enterprise: {},
     show: false,
     showModal: false,
+    scrollY: new Animated.Value(0),
   }
 
   async componentDidMount() {
     const { getAllEnterpresises } = this.props;
     await getAllEnterpresises();
+  }
+
+  shouldComponentUpdate(nextProps) {
+    const { scrollY } = this.state;
+
+    this.animatedElevation = scrollY.interpolate({
+      inputRange: [0, 10],
+      outputRange: [0, 4],
+      extrapolate: 'clamp',
+    });
+
+    this.animatedTextColor = scrollY.interpolate({
+      inputRange: [0, 10],
+      outputRange: [colors.primary, colors.white],
+      extrapolate: 'clamp',
+    });
+
+    this.animatedBgColor = scrollY.interpolate({
+      inputRange: [0, 10],
+      outputRange: [colors.white, colors.primary],
+      extrapolate: 'clamp',
+    });
+
+
+    return nextProps;
   }
 
   onHandleTryLogout = () => {
@@ -51,7 +77,9 @@ class Home extends React.Component {
 
   render() {
     const { enterprises, error } = this.props;
-    const { show, showModal, enterprise } = this.state;
+    const {
+      show, showModal, enterprise, scrollY,
+    } = this.state;
 
     if (!enterprises) {
       return <ActivityIndicatorView />;
@@ -59,8 +87,25 @@ class Home extends React.Component {
 
     return (
       <ContainerView color={colors.white} error={error}>
-        <ProfileBar onPress={this.onHandleShowProfile} />
-        <ScrollView
+        <ProfileBar
+          onPress={this.onHandleShowProfile}
+          backgroundColor={this.animatedBgColor}
+          elevation={this.animatedElevation}
+          color={this.animatedTextColor}
+        />
+        <Animated.ScrollView
+          scrollEventThrolle={1}
+          onScroll={
+            Animated.event(
+              [
+                {
+                  nativeEvent: {
+                    contentOffset: { y: scrollY },
+                  },
+                },
+              ],
+            )
+          }
           contentContainerStyle={{
             padding: 20,
           }}
@@ -70,7 +115,7 @@ class Home extends React.Component {
                 return <Card onPress={this.onHandleClickEnterprise} enterprise={e} key={e.id} />;
               })
           }
-        </ScrollView>
+        </Animated.ScrollView>
         {
           show
             ? <User onPress={this.onHandleTryLogout} />

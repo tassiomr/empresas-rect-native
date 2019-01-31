@@ -4,6 +4,7 @@ const initalState = {
   loading: false,
   error: null,
   success: false,
+  successLogout: false,
 };
 
 export default (state = initalState, action) => {

@@ -1,9 +1,14 @@
 import React from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { Image, ActivityIndicator } from 'react-native';
 import { colors } from '../../utils/colors';
+import { ContainerView } from '../ContainerView';
+import { Wrapper } from '../Wrapper';
 
-export const ActivityIndicatorView = () => {
-    <View style={{ flex: 1 }}>
-        <ActivityIndicator size="large" color={colors.primary} />
-    </View>
-}
+export const ActivityIndicatorView = () => (
+    <ContainerView color={colors.white}>
+        <Wrapper style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Image source={require('../../assets/ioasys.png')} style={{ width: '50%', height: 80 }} />
+            <ActivityIndicator size="large" color={colors.primary} />
+        </Wrapper>
+    </ContainerView>
+)

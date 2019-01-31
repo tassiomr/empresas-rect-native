@@ -3,6 +3,7 @@ import Types from '../types';
 const initalState = {
   loading: false,
   error: null,
+  success: false,
 };
 
 export default (state = initalState, action) => {
@@ -17,7 +18,12 @@ export default (state = initalState, action) => {
       };
     case Types.LOGIN.SUCCESS_LOGIN:
       return {
-        ...state, loading: false, type: action.type, data: action.data, user: action.user,
+        ...state,
+        loading: false,
+        success: true,
+        type: action.type,
+        data: action.data,
+        user: action.user,
       };
     case Types.LOGIN.REQUEST_SET_CREDENTIALS:
       return { ...state, loading: true, type: action.type };
@@ -27,6 +33,13 @@ export default (state = initalState, action) => {
       return {
         ...state, loading: false, type: action.type, error: action.error,
       };
+    case Types.LOGIN.REQUEST_LOGOUT:
+      return { ...state };
+    case Types.LOGIN.SUCCESS_LOGOUT:
+      return { ...state, successLogout: true };
+    case Types.LOGIN.FAILURE_LOGOUT:
+      return { ...state, successLogout: false, error: action.error };
+
     default:
       return state;
   }

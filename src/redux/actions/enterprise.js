@@ -31,7 +31,6 @@ export const getAllEnterpresises = () => async dispatch => {
         if(result.error) {
             dispatch(failureGetAll(result.error))
         } else {
-            AsyncStorage.setItem('enterprises', JSON.stringify(result.data));
             dispatch(successGetAll(result.data));
         }
         

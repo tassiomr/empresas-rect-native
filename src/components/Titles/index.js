@@ -11,10 +11,10 @@ export const SubtTitle = ({ children }) => (
 
 const styles = StyleSheet.create({
     title: {
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: 'bold'
     },
     subtitle: {
-        fontSize: 14
+        fontSize: 13
     }
 })

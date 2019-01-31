@@ -50,7 +50,6 @@ const failureSetCredentials = error => ({
 
 export const tryLogin = (email, password) => dispatch => {
     dispatch(requestLogin());
-
     try {
         
         axios.post(
@@ -70,7 +69,7 @@ export const setCredentials = (data, user) => dispatch => {
         dispatch(requestSetCredentials());
         AsyncStorage.setItem('accessToken', data['access-token'])
         AsyncStorage.setItem('uid', data.uid)
-        AsyncStorage.setItem('client', data.cliet)
+        AsyncStorage.setItem('client', data.client)
         AsyncStorage.setItem('user', JSON.stringify(user))
         dispatch(successSetCredentials());
     } catch(error) {

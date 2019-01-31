@@ -1,23 +1,14 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Title, SubtTitle } from '../Titles';
 import { Image } from '../Image';
 import { url, profile } from '../../utils/strings';
 import { colors } from '../../utils/colors';
 
 
-export const Card = ({ enterprise }) => (
-    <TouchableOpacity>
-        <View style={{ 
-                flexDirection: 'row', 
-                alignItems: 'center',
-                backgroundColor: colors.white,
-                elevation: 1.5,
-                marginTop: 10,
-                marginBottom: 5,
-                height: 100,
-                borderRadius: 5,
-            }}>
+export const Card = ({ enterprise, onPress }) => (
+    <TouchableOpacity onPress={() => onPress(enterprise)}>
+        <View style={styles.container}>
             <Image size={100} uri={enterprise.photo 
                                     ? { uri: `${url}/${enterprise.photo}` }
                                     : { uri: profile } 
@@ -27,7 +18,7 @@ export const Card = ({ enterprise }) => (
                                     borderBottomLeftRadius: 5,
                                 }}
                                     />   
-            <View style={{ paddingLeft: 8, height: 100, justifyContent: "flex-start" }}>
+            <View style={styles.enterprise}>
                 <Title>
                     { enterprise.enterprise_name }
                 </Title>
@@ -38,3 +29,21 @@ export const Card = ({ enterprise }) => (
         </View>
     </TouchableOpacity>
 )
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row', 
+        alignItems: 'center',
+        backgroundColor: colors.white,
+        elevation: 1.5,
+        marginTop: 10,
+        marginBottom: 5,
+        height: 100,
+        borderRadius: 5,
+    },
+    enterprise: { 
+        paddingLeft: 8, 
+        height: 100, 
+        justifyContent: "flex-start" 
+    }
+})

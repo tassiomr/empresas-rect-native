@@ -1,8 +1,6 @@
 import React from 'react';
-import { Animated, View, AsyncStorage } from 'react-native';
+import { Animated, StyleSheet, AsyncStorage } from 'react-native';
 import { Title, SubtTitle } from '../components/Titles';
-import { Button } from '../components';
-import { colors } from '../utils/colors';
 
 export default class User extends React.Component {
     state = {
@@ -32,24 +30,8 @@ export default class User extends React.Component {
     render () {
         const { user, animateOpacity } = this.state;
         return (
-            <Animated.View style={{ 
-                position: 'absolute' ,  
-                backgroundColor: 'rgba(0,0,0,0.4)', 
-                height: '100%', 
-                opacity: animateOpacity,
-                alignItems: 'flex-end',
-                width: '100%' }}>
-                <Animated.View style={{ 
-                    top: '9%',
-                    paddingTop: 5,
-                    marginRight: 40,
-                    backgroundColor: 'white', 
-                    borderRadius: 5,
-                    opacity: animateOpacity,
-                    height: '30%',
-                    elevation: 5,
-                    width: '65%' }}>
-                    <Animated.View style={{ opacity: animateOpacity, paddingLeft: 15, flex: 1 }}>
+            <Animated.View style={[styles.container, { opacity: animateOpacity }]}>
+                <Animated.View style={[styles.modal, { opacity: animateOpacity }]}>
                         <Title>
                            { user.investor.investor_name } 
                         </Title>
@@ -62,10 +44,28 @@ export default class User extends React.Component {
                         <SubtTitle>
                             Country { user.investor.country }
                         </SubtTitle>
-                    </Animated.View>
-                    <Button label="Logout" color={colors.primary} txtColor={colors.white}/>
                 </Animated.View>
             </Animated.View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        position: 'absolute' ,  
+        backgroundColor: 'rgba(0,0,0,0.4)', 
+        height: '100%', 
+        alignItems: 'center',
+        width: '100%'
+    },
+    modal: {
+        top: '10%',
+        paddingTop: 5,
+        paddingLeft: 15,
+        backgroundColor: 'white', 
+        borderRadius: 5,
+        height: '16%',
+        elevation: 8,
+        width: '97%' 
+    }
+})

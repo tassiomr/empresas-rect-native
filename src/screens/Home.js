@@ -9,13 +9,13 @@ import { connect } from 'react-redux';
 import { Card } from '../components/Card';
 import { ProfileBar } from '../components/ProfileBar';
 import User from './User';
+import EnterprieDetail from './EnterpriseDetail';
 
 class Home extends React.Component {
     state = {
-        enterprise: {
-            enterprises: []
-        },
-        show: false
+        enterprise: {},
+        show: false,
+        showModal: false
     }
 
     async componentDidMount() {
@@ -26,11 +26,18 @@ class Home extends React.Component {
         this.props.logout()
     }
 
-    onHandleShowProfile = () => this.setState({ show: !this.state.show })
+    onHandleShowProfile = () => this.setState({ 
+        show: !this.state.show,
+        showModal: false
+    })
+
+    onHandleClickEnterprise = (enterprise) => { 
+        this.setState({ showModal: true, show: false, enterprise })
+    }
 
     render(){
         const { enterprises, error } = this.props
-        const { show } = this.state;
+        const { show, showModal, enterprise } = this.state;
         
         if(!enterprises) {
             return <ActivityIndicatorView />
@@ -46,13 +53,18 @@ class Home extends React.Component {
                     <Input placeholder="Search the enterprises" />
                     {
                        enterprises.map(e => {
-                          return <Card enterprise={e} key={e.id} />
+                          return <Card onPress={this.onHandleClickEnterprise} enterprise={e} key={e.id} />
                        })
                     }
                 </ScrollView>
                 {
                     show 
                     ? <User onPress={this.onHandleTryLogout}/>
+                    : null
+                }
+                {
+                    showModal
+                    ? <EnterprieDetail enterprise={enterprise} />
                     : null
                 }
             </ContainerView>

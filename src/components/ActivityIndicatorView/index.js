@@ -5,10 +5,10 @@ import { ContainerView } from '../ContainerView';
 import { Wrapper } from '../Wrapper';
 
 export const ActivityIndicatorView = () => (
-    <ContainerView color={colors.white}>
+    <ContainerView color={colors.primary}>
         <Wrapper style={{ justifyContent: 'center', flex: 1, alignItems: 'center' }}>
         <Image source={require('../../assets/ioasys.png')} style={{ width: '50%', height: 80 }} />
-            <ActivityIndicator size="large" color={colors.primary} />
+            <ActivityIndicator size="large" color={colors.black} />
         </Wrapper>
     </ContainerView>
 )

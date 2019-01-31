@@ -8,3 +8,4 @@ export { Card } from './Card';
 export { Title, SubTitle } from './Titles';
 export { ProfileBar } from './ProfileBar';
 export { IconBar } from './IconBar';
+export { CloseButton } from './CloseButton';

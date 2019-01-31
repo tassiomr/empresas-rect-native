@@ -1,6 +1,7 @@
 import React from 'react';
 import { Animated, StyleSheet, AsyncStorage } from 'react-native';
 
+import colors from '../utils/colors';
 import { Title, SubTitle } from '../components';
 
 const styles = StyleSheet.create({
@@ -12,10 +13,10 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   modal: {
-    top: '10%',
+    top: '15%',
     paddingTop: 5,
     paddingLeft: 15,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     borderRadius: 5,
     height: '16%',
     elevation: 8,

@@ -3,7 +3,7 @@ import { Animated, StyleSheet, AsyncStorage } from 'react-native';
 import PropTypes from 'prop-types';
 
 import {
-  Title, SubTitle, IconBar, Wrapper,
+  Title, SubTitle, IconBar, Wrapper, CloseButton,
 } from '../components';
 
 import colors from '../utils/colors';
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   title: {
     backgroundColor: colors.primary,
     height: 80,
+    flexDirection: 'row',
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
     justifyContent: 'center',
@@ -60,9 +61,12 @@ export default class EnterpriseDetail extends React.Component {
         <Animated.View style={[styles.container, { opacity: animateOpacity }]}>
           <Animated.View style={[styles.modal, { opacity: animateOpacity }]}>
             <Animated.View style={[styles.title, { opacity: animateOpacity }]}>
-              <Title color={colors.white}>
-                {enterprise.enterprise_name}
-              </Title>
+              <Wrapper styles={{ flex: 2, backgroundColor: 'grey' }}>
+                <Title color={colors.white}>
+                  {enterprise.enterprise_name}
+                </Title>
+              </Wrapper>
+              <CloseButton onPress={this.onHandleCloe} />
             </Animated.View>
             <Wrapper style={{ flex: 1, padding: 5 }}>
               <SubTitle>

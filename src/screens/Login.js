@@ -108,7 +108,7 @@ Login.propTypes = {
   tryLogin: PropTypes.func.isRequired,
   setCredentials: PropTypes.func.isRequired,
   error: PropTypes.string,
-  data: PropTypes.array,
+  data: PropTypes.object,
   loading: PropTypes.bool,
   user: PropTypes.object,
   navigation: PropTypes.object.isRequired,

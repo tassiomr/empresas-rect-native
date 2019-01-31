@@ -21,7 +21,8 @@
     "global-require": "off",
     "no-shadow": "off",
     "react/jsx-one-expression-per-line": "off",
-    "react/no-did-update-set-state": "off"
+    "react/no-did-update-set-state": "off",
+    "react/jsx-filename-extension": "off"
   },
   
 }

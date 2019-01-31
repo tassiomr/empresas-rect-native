@@ -1,0 +1,35 @@
+import React from 'react';
+import { View, StatusBar, StyleSheet } from 'react-native';
+import colors from '../../utils/colors';
+import { Title } from '../Titles';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+export const ContainerView = ({ color, children, error }) => (
+  <View style={[
+    styles.container,
+    { backgroundColor: color }]}
+  >
+    <StatusBar backgroundColor={colors.primary} barStyle="dark-content" />
+    { children }
+    {
+            error
+              ? (
+                <View style={{
+                  height: 50, backgroundColor: 'yellow', justifyContent: 'center', alignItems: 'center',
+                }}
+                >
+                  <Title>{error}</Title>
+
+                </View>
+              )
+              : null
+        }
+  </View>
+);
+
+export default ContainerView;

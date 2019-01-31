@@ -16,6 +16,8 @@
     "airbnb"
   ],
   "rules" : {
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "react/no-unused-state": "off",
+    "global-require": "off"
   }
 }

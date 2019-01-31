@@ -3,6 +3,6 @@ import login from './login';
 import enterprise from './enterprise';
 
 export default combineReducers({
-    login,
-    enterprise
-})
+  login,
+  enterprise,
+});

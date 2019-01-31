@@ -23,7 +23,7 @@ export default class User extends React.Component {
             this.state.animateOpacity,
             {
                 toValue: 1,
-                duration: 900
+                duration: 400
             }
         ).start()
     }
@@ -36,7 +36,7 @@ export default class User extends React.Component {
                 backgroundColor: 'rgba(0,0,0,0.4)', 
                 height: '100%', 
                 opacity: animateOpacity,
-                alignItems: 'fssslex-end',
+                alignItems: 'flex-end',
                 width: '100%' }}>
                 <Animated.View style={{ 
                     top: '9%',

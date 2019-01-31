@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import { bindActionCreators } from 'redux';
-import { ContainerView, Input, Button, Wrapper } from '../components'
+import { ContainerView, Input, Button,  Wrapper } from '../components'
 import { tryLogin, setCredentials } from '../redux/actions/login';
 import { colors } from '../utils/colors';
 
@@ -36,6 +36,7 @@ class Login extends React.Component {
             <ContainerView color={colors.primary} error={error}>
                 <Wrapper style={styles.wrapper}>
                     <Wrapper style={{ height: '45%', width: '100%', justifyContent: 'space-around' }}>
+                        <Image uri={require('../assets/ioasys.png')} width="50%"  height={80}/>
                         <Input 
                             keyboardType="email-address"
                             placeholder="Email" 

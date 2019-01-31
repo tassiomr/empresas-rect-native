@@ -19,8 +19,8 @@ export const Card = ({ enterprise }) => (
                 borderRadius: 5,
             }}>
             <Image size={100} uri={enterprise.photo 
-                                    ?`${url}/${enterprise.photo}`
-                                    : profile
+                                    ? { uri: `${url}/${enterprise.photo}` }
+                                    : { uri: profile } 
                                 } 
                                 style={{
                                     borderTopLeftRadius: 5,

@@ -19,12 +19,7 @@ class Home extends React.Component {
     }
 
     async componentDidMount() {
-        const enterprise = await AsyncStorage.getItem('enterprises');
-        if(!enterprise) {
-            await this.props.getAllEnterpresises()
-        } else {
-            this.setState({ enterprise: JSON.parse(enterprise)})
-        }
+        await this.props.getAllEnterpresises()
     }
 
     onHandleTryLogout = () => {
@@ -67,7 +62,7 @@ class Home extends React.Component {
 
 
 const mapStateToProps = ({ enterprise }) => ({
-    enterprises: enterprise.data,
+    enterprises: enterprise.data ? enterprise.data.enterprises : null,
     error: enterprise.error
 })
 

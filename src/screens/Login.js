@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { ContainerView, Input, Button, Wrapper } from '../components'
 import { tryLogin, setCredentials } from '../redux/actions/login';
@@ -30,49 +30,47 @@ class Login extends React.Component {
     }
 
     render() {
-        const { loading, login } = this.props;
+        const { loading, login, error } = this.props;
         
         return (
-            <ContainerView color={colors.primary}>
+            <ContainerView color={colors.primary} error={error}>
                 <Wrapper style={styles.wrapper}>
-                <Input 
-                    keyboardType="email-address"
-                    placeholder="Email" 
-                    value={this.state.email}
-                    onChangeText={text => this.setState({ username: text })}
-                />
-                <Input 
-                    keyboardType="numeric"
-                    placeholder="Password" 
-                    secureTextEntry
-                    value={this.state.password}
-                    onChangeText={text => this.setState({ username: text })}
-                />
-                <Button 
-                    label="Login"
-                    txtColor={colors.white}
-                    color={colors.brown}
-                    loading={loading}
-                    onPress={this.onHandleLogin}
-                />
-                <Text>
-                    {
-                        login.type
-                    }
-                </Text>
+                    <Wrapper style={{ height: '45%', width: '100%', justifyContent: 'space-around' }}>
+                        <Input 
+                            keyboardType="email-address"
+                            placeholder="Email" 
+                            value={this.state.email}
+                            onChangeText={text => this.setState({ username: text })}
+                        />
+                        <Input 
+                            keyboardType="numeric"
+                            placeholder="Password" 
+                            secureTextEntry
+                            value={this.state.password}
+                            onChangeText={text => this.setState({ username: text })}
+                        />
+                        <Button 
+                            label="Login"
+                            txtColor={colors.white}
+                            color={colors.brown}
+                            loading={loading}
+                            onPress={this.onHandleLogin}
+                        />
+                    </Wrapper>
                 </Wrapper>
             </ContainerView>
         )
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     wrapper: {
         alignItems: 'center',
         justifyContent: 'center',
+        flex: 1,
         padding: 35
     }
-}
+})
 
 const mapStateToProps = ({ login }) => ({
     login,

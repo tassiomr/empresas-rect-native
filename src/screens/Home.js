@@ -43,7 +43,7 @@ class Home extends React.Component {
                     contentContainerStyle={{
                         padding: 20
                     }}>
-                    <Input />
+                    <Input placeholder="Search the enterprises" />
                     {
                        enterprises.map(e => {
                           return <Card enterprise={e} key={e.id} />

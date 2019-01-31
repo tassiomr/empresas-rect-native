@@ -5,12 +5,14 @@ import colors from '../../utils/colors';
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 20,
+    fontSize: 14,
     fontWeight: 'bold',
     color: colors.white,
   },
   button: {
-    flex: 1,
+    flex: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

@@ -17,6 +17,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
   },
+  containerTitle: {
+    flex: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   modal: {
     backgroundColor: 'white',
     borderRadius: 5,
@@ -54,6 +59,25 @@ export default class EnterpriseDetail extends React.Component {
       ).start();
     }
 
+    componentWillMount() {
+      clearTimeout();
+    }
+
+    onHandleClose = () => {
+      const { animateOpacity } = this.state;
+      const { close } = this.props;
+      Animated.timing(
+        animateOpacity,
+        {
+          toValue: 0,
+          duration: 600,
+        },
+      ).start();
+
+      setTimeout(() => close(), 601);
+    }
+
+
     render() {
       const { animateOpacity } = this.state;
       const { enterprise } = this.props;
@@ -61,12 +85,12 @@ export default class EnterpriseDetail extends React.Component {
         <Animated.View style={[styles.container, { opacity: animateOpacity }]}>
           <Animated.View style={[styles.modal, { opacity: animateOpacity }]}>
             <Animated.View style={[styles.title, { opacity: animateOpacity }]}>
-              <Wrapper styles={{ flex: 2, backgroundColor: 'grey' }}>
+              <Wrapper style={styles.containerTitle}>
                 <Title color={colors.white}>
                   {enterprise.enterprise_name}
                 </Title>
               </Wrapper>
-              <CloseButton onPress={this.onHandleCloe} />
+              <CloseButton onPress={this.onHandleClose} />
             </Animated.View>
             <Wrapper style={{ flex: 1, padding: 5 }}>
               <SubTitle>
@@ -99,4 +123,5 @@ export default class EnterpriseDetail extends React.Component {
 
 EnterpriseDetail.propTypes = {
   enterprise: PropTypes.object.isRequired,
+  close: PropTypes.func.isRequired,
 };

@@ -133,7 +133,12 @@ class Home extends React.Component {
         }
         {
           showModal
-            ? <EnterprieDetail enterprise={enterprise} />
+            ? (
+              <EnterprieDetail
+                close={() => this.setState({ showModal: false })}
+                enterprise={enterprise}
+              />
+            )
             : null
         }
       </ContainerView>

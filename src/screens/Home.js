@@ -17,69 +17,73 @@ import User from './User';
 import EnterprieDetail from './EnterpriseDetail';
 
 class Home extends React.Component {
-    state = {
-      enterprise: {},
-      show: false,
+  static navigationOptions = {
+    header: null,
+  }
+
+  state = {
+    enterprise: {},
+    show: false,
+    showModal: false,
+  }
+
+  async componentDidMount() {
+    const { getAllEnterpresises } = this.props;
+    await getAllEnterpresises();
+  }
+
+  onHandleTryLogout = () => {
+    const { logout } = this.props;
+    logout();
+  }
+
+  onHandleShowProfile = () => {
+    const { show } = this.state;
+    this.setState({
+      show: !show,
       showModal: false,
+    });
+  }
+
+  onHandleClickEnterprise = (enterprise) => {
+    this.setState({ showModal: true, show: false, enterprise });
+  }
+
+  render() {
+    const { enterprises, error } = this.props;
+    const { show, showModal, enterprise } = this.state;
+
+    if (!enterprises) {
+      return <ActivityIndicatorView />;
     }
 
-    async componentDidMount() {
-      const { getAllEnterpresises } = this.props;
-      await getAllEnterpresises();
-    }
-
-    onHandleTryLogout = () => {
-      const { logout } = this.props;
-      logout();
-    }
-
-    onHandleShowProfile = () => {
-      const { show } = this.state;
-      this.setState({
-        show: !show,
-        showModal: false,
-      });
-    }
-
-    onHandleClickEnterprise = (enterprise) => {
-      this.setState({ showModal: true, show: false, enterprise });
-    }
-
-    render() {
-      const { enterprises, error } = this.props;
-      const { show, showModal, enterprise } = this.state;
-
-      if (!enterprises) {
-        return <ActivityIndicatorView />;
-      }
-
-      return (
-        <ContainerView color={colors.white} error={error}>
-          <ProfileBar onPress={this.onHandleShowProfile} />
-          <ScrollView
-            contentContainerStyle={{
-              padding: 20,
-            }}
-          >
-            {
-                enterprises.map((e) => {
-                  return <Card onPress={this.onHandleClickEnterprise} enterprise={e} key={e.id} />;
-                })
-            }
-          </ScrollView>
+    return (
+      <ContainerView color={colors.white} error={error}>
+        <ProfileBar onPress={this.onHandleShowProfile} />
+        <ScrollView
+          contentContainerStyle={{
+            padding: 20,
+          }}
+        >
           {
-            show
-              ? <User onPress={this.onHandleTryLogout} />
-              : null
+              enterprises.map((e) => {
+                return <Card onPress={this.onHandleClickEnterprise} enterprise={e} key={e.id} />;
+              })
           }
-          {
-            showModal
-              ? <EnterprieDetail enterprise={enterprise} />
-              : null
-          }
-        </ContainerView>
-      );
-    }
+        </ScrollView>
+        {
+          show
+            ? <User onPress={this.onHandleTryLogout} />
+            : null
+        }
+        {
+          showModal
+            ? <EnterprieDetail enterprise={enterprise} />
+            : null
+        }
+      </ContainerView>
+    );
+  }
 }
 
 

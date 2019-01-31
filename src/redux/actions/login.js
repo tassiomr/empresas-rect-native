@@ -57,10 +57,10 @@ export const tryLogin = (email, password) => dispatch => {
             { email, password }, 
             { headers: { 'Content-Type': 'application/json'}})
             .then(e => dispatch(successLogin(e.headers, e.data)))
-            .catch(e => alert(e))
+            .catch(e => dispatch(failureLogin(e.message)))
 
     } catch(error) {
-        dispatch(failureLogin(error));
+        dispatch(failureLogin(JSON.stringify(error)));
     }
 }
 

@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {
   ActivityIndicator, TouchableOpacity, Text, StyleSheet,
 } from 'react-native';
+import colors from '../../utils/colors';
 
 const styles = StyleSheet.create({
   btn: {
@@ -32,5 +35,21 @@ export const Button = ({
         }
   </TouchableOpacity>
 );
+
+Button.propTypes = {
+  onPress: PropTypes.func,
+  label: PropTypes.string,
+  loading: PropTypes.bool,
+  color: PropTypes.string,
+  txtColor: PropTypes.string,
+};
+
+Button.defaultProps = {
+  onPress: () => {},
+  label: 'Press',
+  loading: false,
+  color: colors.primary,
+  txtColor: colors.white,
+};
 
 export default Button;

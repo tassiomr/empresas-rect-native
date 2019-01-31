@@ -1,13 +1,18 @@
 import React from 'react';
-import { AsyncStorage, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import { ContainerView, Input, ActivityIndicatorView } from '../components';
-import { colors } from '../utils/colors';
+import colors from '../utils/colors';
+
 import { logout } from '../redux/actions/login';
 import { getAllEnterpresises } from '../redux/actions/enterprise';
+
 import { Card } from '../components/Card';
 import { ProfileBar } from '../components/ProfileBar';
+
 import User from './User';
 import EnterprieDetail from './EnterpriseDetail';
 
@@ -87,5 +92,12 @@ const mapStateToProps = ({ enterprise }) => ({
 const mapDispatchToProps = dispatch => (
   bindActionCreators({ getAllEnterpresises, logout }, dispatch)
 );
+
+Home.propTypes = {
+  getAllEnterpresises: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
+  enterprises: PropTypes.arrayOf.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

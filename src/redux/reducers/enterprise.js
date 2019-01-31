@@ -1,4 +1,4 @@
-import { SUCCESS_GET_ALL, REQUEST_GET_ALL, FAILURE_GET_ALL } from '../actions/enterprise';
+import Types from '../types';
 
 const initialState = {
   error: null,
@@ -7,15 +7,15 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SUCCESS_GET_ALL:
+    case Types.ENTERPRISE.SUCCESS_GET_ALL:
       return {
         ...state, data: action.data, loading: false, type: action.type,
       };
-    case REQUEST_GET_ALL:
+    case Types.ENTERPRISE.REQUEST_GET_ALL:
       return {
         ...state, loading: true, type: action.type, error: null,
       };
-    case FAILURE_GET_ALL:
+    case Types.ENTERPRISE.FAILURE_GET_ALL:
       return {
         ...state, loading: false, error: action.error, type: action.type,
       };

@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, StatusBar, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
+
 import colors from '../../utils/colors';
 import { Title } from '../Titles';
 
@@ -31,5 +33,16 @@ export const ContainerView = ({ color, children, error }) => (
         }
   </View>
 );
+
+ContainerView.propTypes = {
+  color: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  error: PropTypes.string,
+};
+
+ContainerView.defaultProps = {
+  color: colors.primary,
+  error: '',
+};
 
 export default ContainerView;

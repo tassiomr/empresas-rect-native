@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TextInput, StyleSheet } from 'react-native';
 import colors from '../../utils/colors';
 
@@ -26,5 +27,19 @@ export const Input = ({
     style={styles.input}
   />
 );
+
+Input.propTypes = {
+  placeholder: PropTypes.string,
+  secureTextEntry: PropTypes.bool,
+  keyboardType: PropTypes.string,
+  onChangeText: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+};
+
+Input.defaultProps = {
+  placeholder: 'Entry Text',
+  secureTextEntry: false,
+  keyboardType: 'numeric',
+};
 
 export default Input;

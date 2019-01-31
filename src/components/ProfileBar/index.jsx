@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Image } from '../Image';
 import { profile } from '../../utils/strings';
@@ -39,5 +40,15 @@ export const ProfileBar = ({ uri, onPress }) => (
     </View>
   </View>
 );
+
+ProfileBar.propTypes = {
+  uri: PropTypes.string,
+  onPress: PropTypes.func,
+};
+
+ProfileBar.defaultProps = {
+  uri: require('../../assets/profiles.png'),
+  onPress: () => {},
+};
 
 export default ProfileBar;

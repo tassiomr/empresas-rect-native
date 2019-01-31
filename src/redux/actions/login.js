@@ -1,50 +1,40 @@
-import axios from 'axios';
+/* eslint-disable import/prefer-default-export */
 import { AsyncStorage } from 'react-native';
+import axios from 'axios';
+
+import Types from '../types';
 
 const url = 'http://empresas.ioasys.com.br/api/v1/users/auth/sign_in';
 
-export const REQUEST_LOGIN = 'REQUEST_LOGIN';
-export const SUCCESS_LOGIN = 'SUCCESS_LOGIN';
-export const FAILURE_LOGIN = 'FAILURE_LOGIN';
-
-const requestLogin = () => ({ type: REQUEST_LOGIN });
+const requestLogin = () => ({ type: Types.LOGIN.REQUEST_LOGIN });
 const successLogin = (data, user) => ({
-  type: SUCCESS_LOGIN,
+  type: Types.LOGIN.SUCCESS_LOGIN,
   data,
   user,
 });
 const failureLogin = error => ({
-  type: FAILURE_LOGIN,
+  type: Types.LOGIN.FAILURE_LOGIN,
   error,
 });
 
-export const REQUEST_LOGOUT = 'REQUEST_LOGOUT';
-export const SUCCESS_LOGOUT = 'SUCCESS_LOGOUT';
-export const FAILURE_LOGOUT = 'FAILURE_LOGOUT';
-
-const requestLogout = () => ({ type: REQUEST_LOGOUT });
+const requestLogout = () => ({ type: Types.LOGIN.REQUEST_LOGOUT });
 const successLogout = (data, user) => ({
-  type: SUCCESS_LOGOUT,
+  type: Types.LOGIN.SUCCESS_LOGOUT,
   data,
   user,
 });
 const failureLogout = error => ({
-  type: FAILURE_LOGOUT,
+  type: Types.LOGIN.FAILURE_LOGOUT,
   error,
 });
 
-
-export const REQUEST_SET_CREDENTIALS = 'REQUEST_SET_CREDENTIALS';
-export const SUCCESS_SET_CREDENTIALS = 'SUCCESS_SET_CREDENTIALS';
-export const FAILURE_SET_CREDENTIALS = 'FAILURE_SET_CREDENTIALS';
-
-const requestSetCredentials = () => ({ type: REQUEST_SET_CREDENTIALS });
+const requestSetCredentials = () => ({ type: Types.LOGIN.REQUEST_SET_CREDENTIALS });
 const successSetCredentials = data => ({
-  type: SUCCESS_SET_CREDENTIALS,
+  type: Types.LOGIN.SUCCESS_SET_CREDENTIALS,
   data,
 });
 const failureSetCredentials = error => ({
-  type: FAILURE_SET_CREDENTIALS, error,
+  type: Types.LOGIN.FAILURE_SET_CREDENTIALS, error,
 });
 
 

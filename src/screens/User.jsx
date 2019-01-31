@@ -1,7 +1,7 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { Animated, StyleSheet, AsyncStorage } from 'react-native';
-import { Title, SubtTitle } from '../components/Titles';
+
+import { Title, SubTitle } from '../components';
 
 const styles = StyleSheet.create({
   container: {
@@ -57,15 +57,15 @@ export default class User extends React.Component {
             <Title>
               { user.investor.investor_name }
             </Title>
-            <SubtTitle>
+            <SubTitle>
                 Email: { user.investor.email}
-            </SubtTitle>
-            <SubtTitle>
+            </SubTitle>
+            <SubTitle>
                 City: { user.investor.city }
-            </SubtTitle>
-            <SubtTitle>
+            </SubTitle>
+            <SubTitle>
                 Country: { user.investor.country }
-            </SubtTitle>
+            </SubTitle>
           </Animated.View>
         </Animated.View>
       );

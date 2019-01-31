@@ -1,11 +1,14 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { connect } from 'react-redux';
 import { StyleSheet, Image } from 'react-native';
+import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 import {
   ContainerView, Input, Button, Wrapper,
 } from '../components';
+
 import { tryLogin, setCredentials } from '../redux/actions/login';
 import colors from '../utils/colors';
 
@@ -28,7 +31,6 @@ class Login extends React.Component {
           const { setCredentials, data, user } = this.props;
 
           if (prevState.data !== data && data && user) {
-            // eslint-disable-next-line react/no-did-update-set-state
             this.setState({ message: 'entrou' });
             setCredentials(data, user);
           }
@@ -80,6 +82,21 @@ class Login extends React.Component {
     }
 }
 
+Login.propTypes = {
+  tryLogin: PropTypes.func.isRequired,
+  setCredentials: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf,
+  loading: PropTypes.bool,
+  user: PropTypes.objectOf,
+};
+
+Login.defaultProps = {
+  loading: false,
+  user: null,
+  data: null,
+};
+
 const mapStateToProps = ({ login }) => ({
   login,
   data: login.data,
@@ -87,6 +104,7 @@ const mapStateToProps = ({ login }) => ({
   loading: login.loading,
   error: login.error,
 });
+
 const mapDispatchToProps = dispatch => bindActionCreators({ tryLogin, setCredentials }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

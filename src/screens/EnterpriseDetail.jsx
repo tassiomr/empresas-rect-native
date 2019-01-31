@@ -1,9 +1,11 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { Animated, StyleSheet, AsyncStorage } from 'react-native';
+import PropTypes from 'prop-types';
+
 import {
-  Title, SubtTitle, IconBar, Wrapper,
+  Title, SubTitle, IconBar, Wrapper,
 } from '../components';
+
 import colors from '../utils/colors';
 
 const styles = StyleSheet.create({
@@ -63,21 +65,21 @@ export default class EnterpriseDetail extends React.Component {
               </Title>
             </Animated.View>
             <Wrapper style={{ flex: 1, padding: 5 }}>
-              <SubtTitle>
+              <SubTitle>
                 Location: {enterprise.city} - {enterprise.country}
-              </SubtTitle>
-              <SubtTitle>
+              </SubTitle>
+              <SubTitle>
                     Type: {enterprise.enterprise_type.enterprise_type_name}
-              </SubtTitle>
+              </SubTitle>
               { enterprise.email
-                ? <SubtTitle>{enterprise.email}</SubtTitle>
+                ? <SubTitle>{enterprise.email}</SubTitle>
                 : null
                 }
             </Wrapper>
             <Wrapper style={{ flex: 4, padding: 5 }}>
-              <SubtTitle>
+              <SubTitle>
                 {enterprise.description}
-              </SubtTitle>
+              </SubTitle>
             </Wrapper>
 
             <IconBar
@@ -90,3 +92,7 @@ export default class EnterpriseDetail extends React.Component {
       );
     }
 }
+
+EnterpriseDetail.propTypes = {
+  enterprise: PropTypes.objectOf.isRequired,
+};

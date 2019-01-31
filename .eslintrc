@@ -18,6 +18,10 @@
   "rules" : {
     "arrow-body-style": "off",
     "react/no-unused-state": "off",
-    "global-require": "off"
-  }
+    "global-require": "off",
+    "no-shadow": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/no-did-update-set-state": "off"
+  },
+  
 }

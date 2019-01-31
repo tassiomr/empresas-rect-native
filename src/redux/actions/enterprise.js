@@ -1,16 +1,14 @@
+/* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import { AsyncStorage } from 'react-native';
 
+import Types from '../types';
+
 const url = 'http://empresas.ioasys.com.br/api/v1';
 
-
-export const REQUEST_GET_ALL = 'REQUEST_GET_ALL';
-export const SUCCESS_GET_ALL = 'SUCCESS_GET_ALL';
-export const FAILURE_GET_ALL = 'FAILURE_GET_ALL';
-
-const requestGetAll = () => ({ type: REQUEST_GET_ALL });
-const successGetAll = data => ({ type: SUCCESS_GET_ALL, data });
-const failureGetAll = error => ({ type: FAILURE_GET_ALL, error });
+const requestGetAll = () => ({ type: Types.ENTERPRISE.REQUEST_GET_ALL });
+const successGetAll = data => ({ type: Types.ENTERPRISE.SUCCESS_GET_ALL, data });
+const failureGetAll = error => ({ type: Types.ENTERPRISE.FAILURE_GET_ALL, error });
 
 export const getAllEnterpresises = () => async (dispatch) => {
   try {

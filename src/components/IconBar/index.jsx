@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 import { Wrapper, Image } from '..';
 
 
@@ -9,13 +10,22 @@ const Button = ({ children, onPress }) => (
   </TouchableOpacity>
 );
 
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  onPress: PropTypes.func,
+};
 
-export const IconBar = ({ facebook, twitter, linkedin }) => (
+Button.defaultProps = {
+  onPress: () => {},
+};
+
+export const IconBar = ({
+  facebook, twitter, linkedin, onPress,
+}) => (
   <Wrapper style={{
     flex: 0.7, flexDirection: 'row', padding: 10, justifyContent: 'space-around',
   }}
   >
-
     <Button onPress={() => onPress(facebook)}>
       <Image size={32} uri={require('../../assets/facebook.png')} />
     </Button>
@@ -27,5 +37,19 @@ export const IconBar = ({ facebook, twitter, linkedin }) => (
     </Button>
   </Wrapper>
 );
+
+IconBar.propTypes = {
+  facebook: PropTypes.string,
+  twitter: PropTypes.string,
+  linkedin: PropTypes.string,
+  onPress: PropTypes.func,
+};
+
+IconBar.defaultProps = {
+  facebook: 'https://www.facebook.com',
+  twitter: 'https://www.twitter.com',
+  linkedin: 'https://www.linkedin.com',
+  onPress: () => {},
+};
 
 export default IconBar;

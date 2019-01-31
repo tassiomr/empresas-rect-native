@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
-import { Title, SubtTitle } from '../Titles';
+import { Title, SubTitle } from '../Titles';
 import { Image } from '../Image';
 import { url, profile } from '../../utils/strings';
 import colors from '../../utils/colors';
@@ -41,13 +42,21 @@ export const Card = ({ enterprise, onPress }) => (
         <Title>
           { enterprise.enterprise_name }
         </Title>
-        <SubtTitle>
+        <SubTitle>
           { enterprise.country }
-        </SubtTitle>
+        </SubTitle>
       </View>
     </View>
   </TouchableOpacity>
 );
 
+Card.propTypes = {
+  enterprise: PropTypes.objectOf.isRequired,
+  onPress: PropTypes.func,
+};
+
+Card.defaultProps = {
+  onPress: () => {},
+};
 
 export default Card;

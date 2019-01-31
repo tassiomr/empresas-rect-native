@@ -1,15 +1,76 @@
 import React from 'react';
-import { ContainerView, Wrapper, Input } from '../components';
+import { AsyncStorage, ScrollView } from 'react-native';
+import { ContainerView, Wrapper, Input, ActivityIndicatorView } from '../components';
 import { colors } from '../utils/colors';
+import { bindActionCreators } from 'redux';
+import { Title, SubtTitle } from '../components/Titles';
+import { logout } from '../redux/actions/login';
+import { getAllEnterpresises } from '../redux/actions/enterprise';
+import { connect } from 'react-redux';
+import { Card } from '../components/Card';
+import { ProfileBar } from '../components/ProfileBar';
+import User from './User';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
+    state = {
+        enterprise: {
+            enterprises: []
+        },
+        show: false
+    }
+
+    async componentDidMount() {
+        const enterprise = await AsyncStorage.getItem('enterprises');
+        if(!enterprise) {
+            await this.props.getAllEnterpresises()
+        } else {
+            this.setState({ enterprise: JSON.parse(enterprise)})
+        }
+    }
+
+    onHandleTryLogout = () => {
+        this.props.logout()
+    }
+
+    onHandleShowProfile = () => this.setState({ show: !this.state.show })
+
     render(){
+        const { enterprises } = this.props
+        const { show } = this.state;
+        
+        if(!enterprises) {
+            return <ActivityIndicatorView />
+        }
+
         return (
             <ContainerView color={colors.white}>
-                <Wrapper style={{ margin: 20 }} >
+                <ProfileBar onPress={this.onHandleShowProfile} />    
+                <ScrollView
+                    contentContainerStyle={{
+                        padding: 20
+                    }}>
                     <Input />
-                </Wrapper>
+                    {
+                       enterprises.map(e => {
+                          return <Card enterprise={e} key={e.id} />
+                       })
+                    }
+                </ScrollView>
+                {
+                    show 
+                    ? <User onPress={this.onHandleTryLogout}/>
+                    : null
+                }
             </ContainerView>
         )
     }
 }
+
+
+const mapStateToProps = ({ enterprise }) => ({
+    enterprises: enterprise.data,
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({ getAllEnterpresises, logout }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

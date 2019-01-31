@@ -19,10 +19,8 @@ const styles = StyleSheet.create({
         height: 55,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 5,
         borderRadius: 5,
         borderWidth: 0
-        
     },
     txt: {
         fontWeight: 'bold',

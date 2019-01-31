@@ -22,79 +22,99 @@ const styles = StyleSheet.create({
 });
 
 class Login extends React.Component {
-        state = {
-          email: 'testeapple@ioasys.com.br',
-          password: '12341234',
-        }
+  static navigationOptions = {
+    header: null,
+  }
 
-        componentDidUpdate(prevState) {
-          const { setCredentials, data, user } = this.props;
+  state = {
+    email: 'testeapple@ioasys.com.br',
+    password: '12341234',
+    message: '',
+  }
 
-          if (prevState.data !== data && data && user) {
-            this.setState({ message: 'entrou' });
-            setCredentials(data, user);
-          }
-        }
+  componentDidMount() {
 
+  }
 
-    onHandleLogin = () => {
-      const { email, password } = this.state;
+  componentDidUpdate(prevState) {
+    const {
+      setCredentials, data, user, success,
+      navigation,
+    } = this.props;
 
-      const { tryLogin } = this.props;
-      tryLogin(
-        email,
-        password,
-      );
+    if (prevState.data !== data && data && user) {
+      this.setState({ message: 'entrou' });
+      setCredentials(data, user);
     }
 
-    render() {
-      const { loading, error } = this.props;
-      const { email, password } = this.state;
-      return (
-        <ContainerView color={colors.primary} error={error}>
-          <Wrapper style={styles.wrapper}>
-            <Wrapper style={{ height: '45%', width: '100%', justifyContent: 'space-around' }}>
-              <Image source={require('../assets/ioasys.png')} style={{ width: '50%', height: 80, alignSelf: 'center' }} />
-              <Input
-                keyboardType="email-address"
-                placeholder="Email"
-                value={email}
-                onChangeText={text => this.setState({ username: text })}
-              />
-              <Input
-                keyboardType="numeric"
-                placeholder="Password"
-                secureTextEntry
-                value={password}
-                onChangeText={text => this.setState({ username: text })}
-              />
-              <Button
-                label="Login"
-                txtColor={colors.white}
-                color={colors.brown}
-                loading={loading}
-                onPress={this.onHandleLogin}
-              />
-            </Wrapper>
+    if (prevState.success !== success && success) {
+      navigation.navigate('Home');
+    }
+  }
+
+  onHandleLogin = () => {
+    const { email, password } = this.state;
+
+    const { tryLogin } = this.props;
+    tryLogin(
+      email,
+      password,
+    );
+  }
+
+  render() {
+    const { loading, error } = this.props;
+    const { email, password } = this.state;
+    return (
+      <ContainerView color={colors.primary} error={error}>
+
+        <Wrapper style={styles.wrapper}>
+          <Wrapper style={{ height: '45%', width: '100%', justifyContent: 'space-around' }}>
+            <Image source={require('../assets/ioasys.png')} style={{ width: '50%', height: 80, alignSelf: 'center' }} />
+            <Input
+              keyboardType="email-address"
+              placeholder="Email"
+              value={email}
+              onChangeText={text => this.setState({ username: text })}
+            />
+            <Input
+              keyboardType="numeric"
+              placeholder="Password"
+              secureTextEntry
+              value={password}
+              onChangeText={text => this.setState({ username: text })}
+            />
+            <Button
+              label="Login"
+              txtColor={colors.white}
+              color={colors.brown}
+              loading={loading}
+              onPress={this.onHandleLogin}
+            />
           </Wrapper>
-        </ContainerView>
-      );
-    }
+        </Wrapper>
+      </ContainerView>
+    );
+  }
 }
 
 Login.propTypes = {
   tryLogin: PropTypes.func.isRequired,
   setCredentials: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired,
+  error: PropTypes.string,
   data: PropTypes.array,
   loading: PropTypes.bool,
   user: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
+  success: PropTypes.bool,
 };
 
 Login.defaultProps = {
   loading: false,
   user: null,
   data: null,
+  success: true,
+  error: null,
 };
 
 const mapStateToProps = ({ login }) => ({
@@ -103,6 +123,7 @@ const mapStateToProps = ({ login }) => ({
   user: login.user,
   loading: login.loading,
   error: login.error,
+  success: login.success,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({ tryLogin, setCredentials }, dispatch);

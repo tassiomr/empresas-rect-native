@@ -94,5 +94,5 @@ export default class EnterpriseDetail extends React.Component {
 }
 
 EnterpriseDetail.propTypes = {
-  enterprise: PropTypes.objectOf.isRequired,
+  enterprise: PropTypes.object.isRequired,
 };

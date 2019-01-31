@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { Title, SubTitle } from '../Titles';
 import { Image } from '../Image';
-import { url, profile } from '../../utils/strings';
+import { url } from '../../utils/strings';
 import colors from '../../utils/colors';
 
 const styles = StyleSheet.create({
@@ -28,14 +28,19 @@ export const Card = ({ enterprise, onPress }) => (
   <TouchableOpacity onPress={() => onPress(enterprise)}>
     <View style={styles.container}>
       <Image
-        size={100}
+        size={enterprise.photo ? 100 : 50}
         uri={enterprise.photo
           ? { uri: `${url}/${enterprise.photo}` }
-          : { uri: profile }
-                                }
+          : require('../../assets/profiles.png')}
         style={{
           borderTopLeftRadius: 5,
           borderBottomLeftRadius: 5,
+        }}
+        styleContainer={{
+          height: 100,
+          width: 100,
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       />
       <View style={styles.enterprise}>
@@ -51,7 +56,7 @@ export const Card = ({ enterprise, onPress }) => (
 );
 
 Card.propTypes = {
-  enterprise: PropTypes.objectOf.isRequired,
+  enterprise: PropTypes.object.isRequired,
   onPress: PropTypes.func,
 };
 

@@ -10,7 +10,7 @@ export const Wrapper = ({ children, style }) => (
 
 Wrapper.propTypes = {
   children: PropTypes.node.isRequired,
-  style: PropTypes.objectOf,
+  style: PropTypes.object,
 };
 
 Wrapper.defaultProps = {

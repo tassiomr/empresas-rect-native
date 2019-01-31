@@ -3,23 +3,23 @@ import PropTypes from 'prop-types';
 import { Image as RNImage, View } from 'react-native';
 
 
-export const Image = ({ uri, size, style }) => (
-  <View style={[{ width: size, height: size }, style]}>
+export const Image = ({
+  uri, size, style, styleContainer,
+}) => (
+  <View style={[{ width: size, height: size }, style, styleContainer]}>
     <RNImage style={[{ width: size, height: size }, style]} source={uri} />
   </View>
 );
 
 Image.propTypes = {
-  uri: PropTypes.oneOfType([
-    PropTypes.objectOf,
-    PropTypes.node,
-  ]),
+  uri: PropTypes.any.isRequired,
   size: PropTypes.number.isRequired,
-  style: PropTypes.objectOf,
+  styleContainer: PropTypes.object,
+  style: PropTypes.object,
 };
 
 Image.defaultProps = {
-  uri: require('../../assets/profiles.png'),
+  styleContainer: {},
   style: {},
 };
 

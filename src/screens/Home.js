@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { ContainerView, Input, ActivityIndicatorView } from '../components';
+import { ContainerView, ActivityIndicatorView } from '../components';
 import colors from '../utils/colors';
 
 import { logout } from '../redux/actions/login';
@@ -61,7 +61,6 @@ class Home extends React.Component {
               padding: 20,
             }}
           >
-            <Input placeholder="Search the enterprises" />
             {
                 enterprises.map((e) => {
                   return <Card onPress={this.onHandleClickEnterprise} enterprise={e} key={e.id} />;
@@ -97,7 +96,7 @@ Home.propTypes = {
   getAllEnterpresises: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   error: PropTypes.string.isRequired,
-  enterprises: PropTypes.arrayOf.isRequired,
+  enterprises: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

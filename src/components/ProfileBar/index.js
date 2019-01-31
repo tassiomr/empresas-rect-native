@@ -47,7 +47,7 @@ ProfileBar.propTypes = {
 };
 
 ProfileBar.defaultProps = {
-  uri: require('../../assets/profiles.png'),
+  uri: require('../../assets/man.png'),
   onPress: () => {},
 };
 

@@ -54,7 +54,7 @@ class Login extends React.Component {
         <ContainerView color={colors.primary} error={error}>
           <Wrapper style={styles.wrapper}>
             <Wrapper style={{ height: '45%', width: '100%', justifyContent: 'space-around' }}>
-              <Image uri={require('../assets/ioasys.png')} width="50%" height={80} />
+              <Image source={require('../assets/ioasys.png')} style={{ width: '50%', height: 80, alignSelf: 'center' }} />
               <Input
                 keyboardType="email-address"
                 placeholder="Email"
@@ -86,9 +86,9 @@ Login.propTypes = {
   tryLogin: PropTypes.func.isRequired,
   setCredentials: PropTypes.func.isRequired,
   error: PropTypes.string.isRequired,
-  data: PropTypes.arrayOf,
+  data: PropTypes.array,
   loading: PropTypes.bool,
-  user: PropTypes.objectOf,
+  user: PropTypes.object,
 };
 
 Login.defaultProps = {

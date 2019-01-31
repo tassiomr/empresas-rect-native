@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { Image } from '../Image';
 import { Button } from '../Button';
+import colors from '../../utils/colors';
 
 const styles = StyleSheet.create({
   view: {
@@ -43,17 +44,32 @@ export const ProfileBar = ({
 );
 
 ProfileBar.propTypes = {
-  uri: PropTypes.string,
+  uri: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.string,
+  ]),
   onPress: PropTypes.func,
-  elevation: PropTypes.number.isRequired,
-  color: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
+  elevation: PropTypes.oneOfType([
+    Animated.AnimatedInterpolation,
+    PropTypes.number,
+  ]),
+  color: PropTypes.oneOfType([
+    Animated.AnimatedInterpolation,
+    PropTypes.string,
+  ]),
+  backgroundColor: PropTypes.oneOfType([
+    Animated.AnimatedInterpolation,
+    PropTypes.string,
+  ]),
   logout: PropTypes.func.isRequired,
 };
 
 ProfileBar.defaultProps = {
   uri: require('../../assets/man.png'),
   onPress: () => {},
+  backgroundColor: colors.white,
+  color: colors.primary,
+  elevation: 0,
 };
 
 export default ProfileBar;

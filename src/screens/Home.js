@@ -29,8 +29,6 @@ class Home extends React.Component {
   }
 
   async componentDidMount() {
-    const { opacity } = this.state;
-
     const { getAllEnterpresises } = this.props;
     await getAllEnterpresises();
   }
@@ -157,8 +155,8 @@ const mapDispatchToProps = dispatch => (
 Home.propTypes = {
   getAllEnterpresises: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired,
-  enterprises: PropTypes.array.isRequired,
+  error: PropTypes.string,
+  enterprises: PropTypes.array,
   success: PropTypes.bool,
   navigation: PropTypes.object,
 };
@@ -166,6 +164,8 @@ Home.propTypes = {
 Home.defaultProps = {
   success: true,
   navigation: {},
+  enterprises: null,
+  error: null,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

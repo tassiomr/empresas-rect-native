@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  ActivityIndicator, TouchableOpacity, Text, StyleSheet,
+  ActivityIndicator, TouchableOpacity, StyleSheet,
   Animated,
 } from 'react-native';
 import colors from '../../utils/colors';
@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
+    marginTop: 5,
     borderWidth: 0,
   },
   txt: {
@@ -29,8 +30,6 @@ export const Button = ({
     onPress={onPress}
   >
     <Animated.View style={[styles.btn, { backgroundColor: color }]}>
-
-
       {
             loading
               ? <ActivityIndicator size="small" color={txtColor} />
@@ -44,8 +43,14 @@ Button.propTypes = {
   onPress: PropTypes.func,
   label: PropTypes.string,
   loading: PropTypes.bool,
-  color: PropTypes.string,
-  txtColor: PropTypes.string,
+  color: PropTypes.oneOfType([
+    Animated.AnimatedInterpolation,
+    PropTypes.func,
+  ]),
+  txtColor: PropTypes.oneOfType([
+    Animated.AnimatedInterpolation,
+    PropTypes.func,
+  ]),
 };
 
 Button.defaultProps = {

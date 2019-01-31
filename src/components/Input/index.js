@@ -8,6 +8,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 55,
     backgroundColor: colors.input,
+    marginTop: 5,
+    marginBottom: 5,
     borderRadius: 5,
     paddingLeft: 10,
     paddingRight: 10,

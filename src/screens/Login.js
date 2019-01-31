@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, Image, AsyncStorage } from 'react-native';
+import {
+  StyleSheet, Image, AsyncStorage, KeyboardAvoidingView,
+} from 'react-native';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
@@ -27,8 +29,8 @@ class Login extends React.Component {
   }
 
   state = {
-    email: 'testeapple@ioasys.com.br',
-    password: '12341234',
+    email: '',
+    password: '',
   }
 
   async componentDidMount() {
@@ -71,22 +73,21 @@ class Login extends React.Component {
     const { email, password } = this.state;
     return (
       <ContainerView color={colors.primary} error={error}>
-
         <Wrapper style={styles.wrapper}>
-          <Wrapper style={{ height: '45%', width: '100%', justifyContent: 'space-around' }}>
+          <KeyboardAvoidingView style={{ height: '100%', width: '100%', justifyContent: 'center' }}>
             <Image source={require('../assets/ioasys.png')} style={{ width: '50%', height: 80, alignSelf: 'center' }} />
             <Input
               keyboardType="email-address"
               placeholder="Email"
               value={email}
-              onChangeText={text => this.setState({ username: text })}
+              onChangeText={text => this.setState({ email: text })}
             />
             <Input
               keyboardType="numeric"
               placeholder="Password"
               secureTextEntry
               value={password}
-              onChangeText={text => this.setState({ username: text })}
+              onChangeText={text => this.setState({ password: text })}
             />
             <Button
               label="Login"
@@ -95,7 +96,8 @@ class Login extends React.Component {
               loading={loading}
               onPress={this.onHandleLogin}
             />
-          </Wrapper>
+          </KeyboardAvoidingView>
+
         </Wrapper>
       </ContainerView>
     );

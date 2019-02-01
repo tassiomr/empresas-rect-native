@@ -11,9 +11,7 @@
 
 ### ANIMATIONS ###
 
-[formbuilder](screenshot/animation.gif)
-
-
+![animation](screenshots/profile.gif) ![animation](screenshots/animation.gif) ![animation](screenshots/animation2.gif) ![animation](screenshots/enterprise.gif) ![animation](screenshots/login.gif) 
 
 
 ### Bibliotecas

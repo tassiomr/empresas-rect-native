@@ -6,19 +6,23 @@
 ### SCREENSHOTS ###
 
 * Login
-![N|Solid](screenshots/login.png) { :width='100px', height='100px' }
 
+![N|Solid](screenshots/login.png)
 * Carregando
-![N|Solid](screenshots/login.png  =100x100)
+
+![N|Solid](screenshots/login.png)
 
 * Logado
-![N|Solid](screenshots/logged.png  =100x100)
+
+![N|Solid](screenshots/logged.png)
 
 * Info Perfil 
-![N|Solid](screenshots/profile.png  =100x100)
+
+![N|Solid](screenshots/profile.png)
 
 * Info Empresa
-![N|Solid](screenshots/enterprise.png  =100x100)
+
+![N|Solid](screenshots/enterprise.png)
 
 
 

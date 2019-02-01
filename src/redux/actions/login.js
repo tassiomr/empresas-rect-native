@@ -47,15 +47,15 @@ export const tryLogin = (email, password) => async (dispatch) => {
       { email, password },
       { headers: { 'Content-Type': 'application/json' } },
     );
-    if (!result.error) {
-      dispatch(successLogin(result.headers, result.data));
-    } else if (result.status === 401) {
+
+    dispatch(successLogin(result.headers, result.data));
+    
+  } catch (error) {
+    if (error.status === 401) {
       dispatch(failureLogin('Usuário ou senha incorretos'));
     } else {
-      dispatch(failureLogin('Erro inesperado, tente novamente!'));
+      dispatch(failureLogin(genericError));
     }
-  } catch (error) {
-    dispatch(failureLogin(genericError));
   }
 };
 

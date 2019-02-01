@@ -5,25 +5,11 @@
 
 ### SCREENSHOTS ###
 
-* Login
+![N|Solid](screenshots/login.png)  [!N|Solid](screenshots/logged.png)  [!N|Solid](screenshots/profile.png)  [!N|Solid](screenshots/enterprise.png)
 
-![N|Solid](screenshots/login.png)
-* Carregando
+### ANIMATIONS ###
 
-![N|Solid](screenshots/login.png)
-
-* Logado
-
-![N|Solid](screenshots/logged.png)
-
-* Info Perfil 
-
-![N|Solid](screenshots/profile.png)
-
-* Info Empresa
-
-![N|Solid](screenshots/enterprise.png)
-
+[Alt text ](screenshot/animation.gif)
 
 
 ### Bibliotecas

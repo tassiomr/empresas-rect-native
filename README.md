@@ -44,6 +44,7 @@
 
 ### Como testar !?!
 
-- Clique em [Empresas.apk](https://bitbucket.org/tassiomarcos/empresas-react-native/raw/1394620467237d35cae8c77f59a0a9c01c142ee1/Empresas.apk) baixe o arquivo
-- Transfira o arquivo baixado para a memoria do smartphone(android)
+- Clique em [Empresas.apk](https://bitbucket.org/tassiomarcos/empresas-react-native/raw/1394620467237d35cae8c77f59a0a9c01c142ee1/Empresas.apk) baixe o arquivo.
+- Transfira o arquivo baixado para a memória do smartphone(android).
+- Certifique-se que o seu smartphone está habilitado para instalar app de fontes desconhecidas.
 - Instale o apk.

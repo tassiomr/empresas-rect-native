@@ -27,6 +27,9 @@ export const Input = ({
     placeholder={placeholder}
     onChangeText={text => onChangeText(text)}
     value={value}
+    autoCapitalize="none"
+    autoComplete="off"
+    autoCorrect={false}
     secureTextEntry={secureTextEntry}
     keyboardType={keyboardType}
     style={styles.input}

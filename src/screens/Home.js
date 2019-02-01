@@ -24,7 +24,7 @@ class Home extends React.Component {
   state = {
     enterprise: {},
     show: false,
-    showModal: true,
+    showModal: false,
     scrollY: new Animated.Value(0),
   }
 
@@ -136,8 +136,7 @@ class Home extends React.Component {
             ? (
               <EnterprieDetail
                 close={() => this.setState({ showModal: false })}
-                // enterprise={enterprise}
-                enterprise={enterprises[0]}
+                enterprise={enterprise}
               />
             )
             : null

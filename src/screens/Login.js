@@ -78,7 +78,7 @@ class Login extends React.Component {
           <KeyboardAvoidingView style={{ height: '100%', width: '100%', justifyContent: 'center' }}>
             <Image source={require('../assets/translucid_icon_invert.png')} style={{ width: 100, height: 100, alignSelf: 'center' }} />
             <Input
-              keyboardType="email-address"
+              keyboardType="default"
               placeholder="Email"
               value={email}
               onChangeText={text => this.setState({ email: text })}

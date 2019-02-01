@@ -11,7 +11,7 @@
 
 ### ANIMATIONS ###
 
-![animation](screenshots/profile.gif) ![animation](screenshots/animation.gif) ![animation](screenshots/animation2.gif) ![animation](screenshots/enterprise.gif) ![animation](screenshots/login.gif) 
+![animation](screenshots/login.gif) ![animation](screenshots/profile.gif) ![animation](screenshots/animation2.gif)  
 
 
 ### Bibliotecas
@@ -44,6 +44,6 @@
 
 ### Como testar !?!
 
-- Clique em [Empresas.apk](https://bitbucket.org/tassiomarcos/empresas-react-native/raw/5cadae26b0ea783c3a715b7cf0fb4175ebefe502/Empresas.apk) baixe o arquivo
+- Clique em [Empresas.apk](https://bitbucket.org/tassiomarcos/empresas-react-native/raw/1394620467237d35cae8c77f59a0a9c01c142ee1/Empresas.apk) baixe o arquivo
 - Transfira o arquivo baixado para a memoria do smartphone(android)
 - Instale o apk.

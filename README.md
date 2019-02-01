@@ -5,11 +5,11 @@
 
 ### SCREENSHOTS ###
 
-![N|Solid](screenshots/login.png)  [!N|Solid](screenshots/logged.png)  [!N|Solid](screenshots/profile.png)  [!N|Solid](screenshots/enterprise.png)
+![N|Solid](screenshots/login.png) ![N|Solid](screenshots/logged.png)  ![N|Solid](screenshots/profile.png)  ![N|Solid](screenshots/enterprise.png)
 
 ### ANIMATIONS ###
 
-[Alt text ](screenshot/animation.gif)
+![Alt text](screenshot/animation.gif)
 
 
 ### Bibliotecas

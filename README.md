@@ -2,6 +2,8 @@
 
 # Desafio React Native - ioasys
 
+### ICONS ####
+![N|Solid](src/assets/icon.png) ![N|Solid](src/assets/icon_invert.png) ![N|Solid](src/assets/translucid_icon.png) ![N|Solid](src/assets/translucid_icon_invert.png) 
 
 ### SCREENSHOTS ###
 
@@ -9,7 +11,9 @@
 
 ### ANIMATIONS ###
 
-![Alt text](screenshot/animation.gif)
+![formbuilder](screenshot/animation.gif)
+
+
 
 
 ### Bibliotecas

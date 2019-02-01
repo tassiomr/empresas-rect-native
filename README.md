@@ -6,19 +6,19 @@
 ### SCREENSHOTS ###
 
 * Login
-![N|Solid](screenshot/login.png)
+![N|Solid](screenshots/login.png)
 
 * Carregando
-![N|Solid](screenshot/login.png)
+![N|Solid](screenshots/login.png)
 
 * Logado
-![N|Solid](screenshot/logged.png)
+![N|Solid](screenshots/logged.png)
 
 * Info Perfil 
-![N|Solid](screenshot/profile.png)
+![N|Solid](screenshots/profile.png)
 
 * Info Empresa
-![N|Solid](screenshot/enterprise.png)
+![N|Solid](screenshots/enterprise.png)
 
 
 

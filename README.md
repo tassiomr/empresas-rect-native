@@ -6,7 +6,7 @@
 ### SCREENSHOTS ###
 
 * Login
-![N|Solid](screenshots/login.png) { width: '100px', height: '100px' }
+![N|Solid](screenshots/login.png) { :width='100px', height='100px' }
 
 * Carregando
 ![N|Solid](screenshots/login.png  =100x100)
@@ -52,6 +52,6 @@
 
 ### Como testar !?!
 
-- Clique em "EMPRESAS.apk" [Empresas.apk](https://bitbucket.org/tassiomarcos/empresas-react-native/raw/5cadae26b0ea783c3a715b7cf0fb4175ebefe502/Empresas.apk) baixe o arquivo
+- Clique em [Empresas.apk](https://bitbucket.org/tassiomarcos/empresas-react-native/raw/5cadae26b0ea783c3a715b7cf0fb4175ebefe502/Empresas.apk) baixe o arquivo
 - Transfira o arquivo baixado para a memoria do smartphone(android)
 - Instale o apk.

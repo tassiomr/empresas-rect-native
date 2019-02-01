@@ -20,9 +20,9 @@
 ### Bibliotecas
 
 * axios
-	- Pacote para auxiliar nas requisições web, utilizei por ser mais amigavel que o fetch e estar mais habituado com o mesmo.
-* prop-types
-	- Pacote para me auxiliar na validação das propriedades dos meus componente.s
+	- Pacote para auxiliar nas requisições web, utilizei por ser mais amigável que o fetch e estar mais habituado ao mesmo.
+* prop-types.
+	- Pacote para me auxiliar na validação das propriedades dos meus componentes.
 * react-navigation
 	- Pacote necessária para navegação entre telas.
 * react-native-gesture-handler
@@ -38,7 +38,7 @@
 * babel-eslint
 	- Dependencia necessaria para configurar o lint.
 * eslint-config-airbnb
-	- Pacote com as regras para o meu lint, es2015, a preferencia pelo AIRBNB é por utilizar ';'.
+	- Pacote com as regras para o meu lint, es2015, a preferência pelo AIRBNB é por utilizar ';'.
 * eslint-plugin-react
 	- Pacote com as regras para o meu lint, react.
 * eslint-plugin-react-native
@@ -46,3 +46,7 @@
 
 
 ### Como testar !?!
+
+- Clique em "EMPRESAS.apk" [Empresas.apk](https://bitbucket.org/tassiomarcos/empresas-react-native/src/master/Empresas.apk) baixe o arquivo
+- Transfira o arquivo baixado para a memoria do smartphone(android)
+- Instale o apk.

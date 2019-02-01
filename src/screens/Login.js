@@ -13,13 +13,14 @@ import {
 
 import { tryLogin, setCredentials } from '../redux/actions/login';
 import colors from '../utils/colors';
+import dimensions from '../utils/dimensions';
 
 const styles = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    padding: 35,
+    padding: dimensions.size(35),
   },
 });
 
@@ -49,11 +50,11 @@ class Login extends React.Component {
     } = this.props;
 
     if (prevState.data !== data && data && user) {
-      this.setState({ message: 'entrou' });
       setCredentials(data, user);
     }
 
     if (prevState.success !== success && success) {
+      this.setState({ email: '', password: '' })
       navigation.navigate('Home');
     }
   }

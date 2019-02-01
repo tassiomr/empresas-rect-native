@@ -1,6 +1,7 @@
 import React from 'react';
 import { Animated, StyleSheet, AsyncStorage } from 'react-native';
 import PropTypes from 'prop-types';
+import dimensions from '../utils/dimensions';
 
 import {
   Title, SubTitle, IconBar, Wrapper, CloseButton,
@@ -12,10 +13,10 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     backgroundColor: 'rgba(0,0,0,0.4)',
-    height: '100%',
+    height: dimensions.height,
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
+    width: dimensions.width,
   },
   containerTitle: {
     flex: 4,
@@ -24,17 +25,17 @@ const styles = StyleSheet.create({
   },
   modal: {
     backgroundColor: 'white',
-    borderRadius: 5,
-    height: '60%',
+    borderRadius: dimensions.size(8),
+    height: dimensions.height * 0.6,
     elevation: 8,
-    width: '90%',
+    width: dimensions.width * 0.9,
   },
   title: {
     backgroundColor: colors.primary,
-    height: 80,
+    height: dimensions.size(60),
     flexDirection: 'row',
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
+    borderTopLeftRadius: dimensions.size(8),
+    borderTopRightRadius: dimensions.size(8),
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -92,7 +93,7 @@ export default class EnterpriseDetail extends React.Component {
               </Wrapper>
               <CloseButton onPress={this.onHandleClose} />
             </Animated.View>
-            <Wrapper style={{ flex: 1, padding: 5 }}>
+            <Wrapper style={{ flex: 1, padding: dimensions.size(10) }}>
               <SubTitle>
                 Location: {enterprise.city} - {enterprise.country}
               </SubTitle>
@@ -104,7 +105,7 @@ export default class EnterpriseDetail extends React.Component {
                 : null
                 }
             </Wrapper>
-            <Wrapper style={{ flex: 4, padding: 5 }}>
+            <Wrapper style={{ flex: 4, padding: dimensions.size(10) }}>
               <SubTitle>
                 {enterprise.description}
               </SubTitle>

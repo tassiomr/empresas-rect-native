@@ -2,6 +2,8 @@ import React from 'react';
 import { Animated, StyleSheet, AsyncStorage } from 'react-native';
 
 import colors from '../utils/colors';
+import dimensions from '../utils/dimensions';
+
 import { Title, SubTitle } from '../components';
 
 const styles = StyleSheet.create({
@@ -13,14 +15,14 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   modal: {
-    top: '15%',
-    paddingTop: 5,
-    paddingLeft: 15,
+    top: dimensions.height * 0.165,
+    paddingTop: dimensions.size(5),
+    paddingLeft: dimensions.size(15),
     backgroundColor: colors.white,
-    borderRadius: 5,
-    height: '16%',
-    elevation: 8,
-    width: '97%',
+    borderRadius: dimensions.size(5),
+    height:dimensions.height * 0.16,
+    elevation: dimensions.size(8),
+    width: dimensions.width * 0.97,
   },
 });
 

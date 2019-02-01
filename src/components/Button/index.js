@@ -5,16 +5,18 @@ import {
   ActivityIndicator, TouchableOpacity, StyleSheet,
   Animated,
 } from 'react-native';
+
+import dimensions from '../../utils/dimensions';
 import colors from '../../utils/colors';
 
 const styles = StyleSheet.create({
   btn: {
     width: '100%',
-    height: 55,
+    height: dimensions.size(40),
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5,
-    marginTop: 5,
+    borderRadius: dimensions.size(5),
+    marginTop: dimensions.size(5),
     borderWidth: 0,
   },
   txt: {

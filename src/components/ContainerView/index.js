@@ -5,6 +5,8 @@ import {
 import PropTypes from 'prop-types';
 
 import colors from '../../utils/colors';
+import dimensions from '../../utils/dimensions';
+
 import { Title } from '../Titles';
 
 const styles = StyleSheet.create({
@@ -31,10 +33,10 @@ export const ContainerView = ({
       error
         ? (
           <View style={{
-            height: 50, backgroundColor: 'yellow', justifyContent: 'center', alignItems: 'center',
+            height: dimensions.size(30), backgroundColor: colors.warn, justifyContent: 'center', alignItems: 'center',
           }}
           >
-            <Title>{error}</Title>
+            <Title color={colors.white} >{error}</Title>
 
           </View>
         )

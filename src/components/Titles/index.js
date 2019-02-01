@@ -1,15 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
+
 import colors from '../../utils/colors';
+import dimensions from '../../utils/dimensions';
+
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 16,
+    fontSize: dimensions.size(13),
     fontWeight: 'bold',
   },
   subtitle: {
-    fontSize: 13,
+    fontSize: dimensions.size(10),
   },
 });
 

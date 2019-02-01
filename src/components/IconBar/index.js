@@ -1,7 +1,10 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
+
 import { Wrapper, Image } from '..';
+import dimensions from '../../utils/dimensions';
+
 
 
 const Button = ({ children, onPress }) => (
@@ -23,7 +26,7 @@ export const IconBar = ({
   facebook, twitter, linkedin, onPress,
 }) => (
   <Wrapper style={{
-    flex: 0.7, flexDirection: 'row', padding: 10, justifyContent: 'space-around',
+    flex: 0.7, flexDirection: 'row', padding: dimensions.size(10), justifyContent: 'space-around',
   }}
   >
     <Button onPress={() => onPress(facebook)}>

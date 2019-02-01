@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
+
 import { Title, SubTitle } from '../Titles';
 import { Image } from '../Image';
+
 import { url } from '../../utils/strings';
 import colors from '../../utils/colors';
+import dimensions from '../../utils/dimensions';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -12,14 +16,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.white,
     elevation: 1.5,
-    marginTop: 10,
-    marginBottom: 5,
-    height: 100,
-    borderRadius: 5,
+    marginTop: dimensions.size(10),
+    marginBottom: dimensions.size(5),
+    height: dimensions.size(70),
+    borderRadius: dimensions.size(5),
   },
   enterprise: {
-    paddingLeft: 8,
-    height: 100,
+    paddingLeft: dimensions.size(8),
+    height: dimensions.size(70),
     justifyContent: 'flex-start',
   },
 });
@@ -28,17 +32,17 @@ export const Card = ({ enterprise, onPress }) => (
   <TouchableOpacity onPress={() => onPress(enterprise)}>
     <View style={styles.container}>
       <Image
-        size={enterprise.photo ? 100 : 50}
+        size={enterprise.photo ? dimensions.size(70) : dimensions.size(35)}
         uri={enterprise.photo
           ? { uri: `${url}/${enterprise.photo}` }
           : require('../../assets/profiles.png')}
         style={{
-          borderTopLeftRadius: 5,
-          borderBottomLeftRadius: 5,
+          borderTopLeftRadius: dimensions.size(5),
+          borderBottomLeftRadius: dimensions.size(5),
         }}
         styleContainer={{
-          height: 100,
-          width: 100,
+          height: dimensions.size(70),
+          width: dimensions.size(70),
           justifyContent: 'center',
           alignItems: 'center',
         }}

@@ -3,16 +3,20 @@ import PropTypes from 'prop-types';
 import {
   Animated, View, TouchableOpacity, StyleSheet,
 } from 'react-native';
+
 import { Image } from '../Image';
 import { Button } from '../Button';
+
 import colors from '../../utils/colors';
+import dimensions from '../../utils/dimensions';
 
 const styles = StyleSheet.create({
   view: {
     zIndex: 2,
     width: '100%',
-    height: 100,
-    paddingLeft: 20,
+    height: dimensions.size(80),
+    paddingTop: dimensions.size(20),
+    paddingLeft: dimensions.size(20),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
@@ -24,7 +28,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   image: {
-    borderRadius: 100,
+    borderRadius: dimensions.size(100),
   },
 });
 

@@ -1,18 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { TextInput, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
+
+import dimensions from '../../utils/dimensions';
 import colors from '../../utils/colors';
+
 
 const styles = StyleSheet.create({
   input: {
     width: '100%',
-    height: 55,
+    height: dimensions.size(40),
     backgroundColor: colors.input,
-    marginTop: 5,
-    marginBottom: 5,
-    borderRadius: 5,
-    paddingLeft: 10,
-    paddingRight: 10,
+    marginTop: dimensions.size(5),
+    marginBottom: dimensions.size(5),
+    borderRadius: dimensions.size(5),
+    paddingLeft: dimensions.size(10),
+    paddingRight: dimensions.size(10),
     color: colors.black,
   },
 });

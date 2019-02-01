@@ -75,7 +75,7 @@ class Login extends React.Component {
       <ContainerView color={colors.primary} error={error}>
         <Wrapper style={styles.wrapper}>
           <KeyboardAvoidingView style={{ height: '100%', width: '100%', justifyContent: 'center' }}>
-            <Image source={require('../assets/ioasys.png')} style={{ width: '50%', height: 80, alignSelf: 'center' }} />
+            <Image source={require('../assets/translucid_icon_invert.png')} style={{ width: 100, height: 100, alignSelf: 'center' }} />
             <Input
               keyboardType="email-address"
               placeholder="Email"

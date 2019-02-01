@@ -6,7 +6,7 @@
 ### SCREENSHOTS ###
 
 * Login
-![N|Solid](screenshots/login.png =100x100)
+![N|Solid](screenshots/login.png) { width: '100px', height: '100px' }
 
 * Carregando
 ![N|Solid](screenshots/login.png  =100x100)
